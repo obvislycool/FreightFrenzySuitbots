@@ -15,7 +15,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class MecanumDriveTeleOp extends OpMode {
 
     final static double DONT_DESTROY_MOTORS = 0.70;
-    final static double DUCK_SPEED = 0.4;
+    final static double DUCK_SPEED = 0.5;
 
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor lfDrive = null;
