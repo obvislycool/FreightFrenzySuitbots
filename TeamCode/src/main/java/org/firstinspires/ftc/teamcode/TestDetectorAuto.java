@@ -19,7 +19,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvPipeline;
 import org.openftc.easyopencv.OpenCvWebcam;
 
-@Disabled //Comment out to run
+//@Disabled //Comment out to run
 @Autonomous(name = "TestDetectorAuto", group = "Auto")
 public class TestDetectorAuto extends LinearOpMode {
 

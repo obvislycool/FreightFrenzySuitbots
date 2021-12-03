@@ -22,11 +22,11 @@ public class ShippingElementDetector extends OpenCvPipeline {
             new Point(60, 35),
             new Point(120, 75));
     static final Rect MIDDLE_ROI = new Rect(
-            new Point(60, 35),
-            new Point(120, 75));
+            new Point(130, 35),
+            new Point(180, 75));
     static final Rect RIGHT_ROI = new Rect(
-            new Point(60, 35),
-            new Point(120, 75));
+            new Point(190, 35),
+            new Point(240, 75));
 
     public ShippingElementDetector(Telemetry t) { telemetry = t; } //Constructor
 
@@ -38,7 +38,7 @@ public class ShippingElementDetector extends OpenCvPipeline {
     public Mat processFrame(Mat input) { //Turn color image to greyscale
         Imgproc.cvtColor(input, mat, Imgproc.COLOR_RGB2HSV);
 
-        Scalar lowHSV = new Scalar(50, 125, 140);//Color threshhold for yellow
+        Scalar lowHSV = new Scalar(23, 50, 70);//Color threshhold for yellow
         Scalar highHSV = new Scalar(70, 255, 255);
 
         Core.inRange(mat, lowHSV, highHSV, mat);
