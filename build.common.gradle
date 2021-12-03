@@ -91,7 +91,7 @@ android {
     // http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.BuildType.html
     buildTypes {
         release {
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.release//different from OpenCV documentation
 
             ndk {
                 abiFilters "armeabi-v7a"
