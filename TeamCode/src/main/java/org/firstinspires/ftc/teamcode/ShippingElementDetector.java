@@ -41,7 +41,7 @@ public class ShippingElementDetector extends OpenCvPipeline {
         Scalar lowHSV = new Scalar(23, 50, 70);//Color threshhold for yellow
         Scalar highHSV = new Scalar(70, 255, 255);
 
-        Core.inRange(mat, lowHSV, highHSV, mat);
+        Core.inRange(mat, lowHSV, highHSV, mat);  //Convert from color to greyscale
         Mat left = mat.submat(LEFT_ROI); //Create a new image that is a portion of the old one within the rectangle
         Mat middle = mat.submat(MIDDLE_ROI);
         Mat right = mat.submat(RIGHT_ROI);
@@ -67,6 +67,8 @@ public class ShippingElementDetector extends OpenCvPipeline {
             elementPosition = ElementPosition.MIDDLE;
         }
 
+
+        //For player-side debugging view (camera stream)
         Imgproc.cvtColor(mat, mat, Imgproc.COLOR_GRAY2RGB); //Convert greyscale back to rgb
 
         Scalar red = new Scalar(255,0,0); //define red and green vals for rectangles
