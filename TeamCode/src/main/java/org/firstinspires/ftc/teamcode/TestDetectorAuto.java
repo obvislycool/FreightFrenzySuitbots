@@ -67,6 +67,8 @@ public class TestDetectorAuto extends LinearOpMode {
                 break;
         }
 
+        telemetry.update();
+
         sleep(300000000); //FIXME
 
         webcam.stopStreaming();
