@@ -15,7 +15,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class MecanumDriveTeleOp extends OpMode {
 
     final static double DONT_DESTROY_MOTORS = 0.70;
-    final static double DUCK_SPEED = 0.5;
+    final static double DUCK_SPEED = 0.55;
 
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor lfDrive = null;
@@ -43,6 +43,8 @@ public class MecanumDriveTeleOp extends OpMode {
         lbDrive.setDirection(DcMotorSimple.Direction.FORWARD);
         rbDrive.setDirection(DcMotorSimple.Direction.REVERSE);
         duckDrive.setDirection(DcMotorSimple.Direction.FORWARD);
+
+        duckDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE); //Stops after input stops
 
         telemetry.addData("Status", "Initialized");
     }
