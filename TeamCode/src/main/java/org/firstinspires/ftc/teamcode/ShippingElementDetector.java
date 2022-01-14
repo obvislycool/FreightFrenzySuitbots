@@ -15,7 +15,7 @@ public class ShippingElementDetector extends OpenCvPipeline {
         MIDDLE,
         RIGHT
     }
-    private ElementPosition elementPosition = null;
+    private ElementPosition elementPosition = ElementPosition.LEFT;
     Telemetry telemetry;
     Mat mat = new Mat();
     static final Rect LEFT_ROI = new Rect(
@@ -30,9 +30,7 @@ public class ShippingElementDetector extends OpenCvPipeline {
 
     public ShippingElementDetector(Telemetry t) { telemetry = t; } //Constructor
 
-    public ElementPosition getElementPosition(){
-        return elementPosition;
-    }
+
 
     @Override
     public Mat processFrame(Mat input) { //Turn color image to greyscale
@@ -79,5 +77,9 @@ public class ShippingElementDetector extends OpenCvPipeline {
         Imgproc.rectangle(mat, RIGHT_ROI, elementPosition==ElementPosition.RIGHT ? green : red);
 
         return mat;
+    }
+
+    public ElementPosition getElementPosition(){
+        return elementPosition;
     }
 }

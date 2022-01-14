@@ -24,13 +24,16 @@ import org.openftc.easyopencv.OpenCvWebcam;
 public class TestDetectorAuto extends LinearOpMode {
 
     OpenCvWebcam webcam;
-    ShippingElementDetector detector = new ShippingElementDetector(telemetry);
+
 
     @Override
     public void runOpMode() throws InterruptedException {
-        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+        int cameraMonitorViewId = hardwareMap.appContext.getResources()
+                .getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
+        ShippingElementDetector detector = new ShippingElementDetector(telemetry);
         webcam.setPipeline(detector);
+
 
         webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() //Start streaming with the webcam
         {
@@ -56,12 +59,17 @@ public class TestDetectorAuto extends LinearOpMode {
 
         waitForStart();
 
+        detector.processFrame(dfs);
+
         switch (detector.getElementPosition()){
             case LEFT:
+                telemetry.addData("Left","");
                 break;
             case MIDDLE:
+                telemetry.addData("Middle","");
                 break;
             case RIGHT:
+                telemetry.addData("Right","");
                 break;
             default:
                 break;

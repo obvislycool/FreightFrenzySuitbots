@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp(name="Mecanum Drive", group="Iterative Opmode")
@@ -16,35 +17,64 @@ public class MecanumDriveTeleOp extends OpMode {
 
     final static double DONT_DESTROY_MOTORS = 0.70;
     final static double DUCK_SPEED = 0.55;
+    final static double HARVEST_SPEED = 0.6;
 
     private ElapsedTime runtime = new ElapsedTime();
+    HardwareDrivetrain robot   = new HardwareDrivetrain();
+
     private DcMotor lfDrive = null;
     private DcMotor rfDrive = null;
     private DcMotor lbDrive = null;
     private DcMotor rbDrive = null;
     private DcMotor duckDrive = null;
+    private DcMotor slideMotor = null;
+    private DcMotor harvestMotor = null;
+
+    private Servo dumpServo = null;
 
     private boolean turboModeOn = false;
     private boolean pressingA = false;
+
+    private int slidePosition = 0; //0 is start, 1 is first, 2 is second, 3 is third
+
+    static final double     COUNTS_PER_MOTOR_REV    = 384.5 ;    // eg: TETRIX Motor Encoder
+    static final double     DRIVE_GEAR_REDUCTION    = 2.0 ;     // This is < 1.0 if geared UP
+    static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
+    static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
+            (WHEEL_DIAMETER_INCHES * Math.PI);
 
     @Override
     public void init() {
 
         telemetry.addData("Status", "Initialized");
 
+        robot.init(hardwareMap);
+
         lfDrive  = hardwareMap.get(DcMotor.class, "lf");
         rfDrive = hardwareMap.get(DcMotor.class, "rf");
         lbDrive = hardwareMap.get(DcMotor.class, "lb");
         rbDrive = hardwareMap.get(DcMotor.class, "rb");
         duckDrive = hardwareMap.get(DcMotor.class, "spinnyDDuck");
+        slideMotor = hardwareMap.get(DcMotor.class, "slidemotor");
+        harvestMotor = hardwareMap.get(DcMotor.class, "harvester");
+
+        dumpServo = hardwareMap.get(Servo.class, "dumpservo");
 
         lfDrive.setDirection(DcMotor.Direction.FORWARD);
         rfDrive.setDirection(DcMotor.Direction.REVERSE);
         lbDrive.setDirection(DcMotorSimple.Direction.FORWARD);
         rbDrive.setDirection(DcMotorSimple.Direction.REVERSE);
         duckDrive.setDirection(DcMotorSimple.Direction.FORWARD);
+        slideMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+
+
+        robot.rbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+
+        robot.lfDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         duckDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE); //Stops after input stops
+        slideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         telemetry.addData("Status", "Initialized");
     }
@@ -61,11 +91,15 @@ public class MecanumDriveTeleOp extends OpMode {
     @Override
     public void loop() {
 
+
         double lfPower;
         double rfPower;
         double lbPower;
         double rbPower;
         double duckPower;
+        double slidePower;
+
+        double dumpPosition;
 
         double y1 = gamepad1.left_stick_y; //temporary bug
         double x1 = gamepad1.left_stick_x; //temporary bug
@@ -145,6 +179,37 @@ public class MecanumDriveTeleOp extends OpMode {
 
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("Motors", "left front (%.2f), right front (%.2f), left back (%.2f), right back (%.2f)", lfPower, rfPower, lbPower, rbPower);
+    }
+    public void encoderDrive(double speed,
+                             double leftInches, double rightInches,
+                             double timeoutS) {
+        int newLFTarget;
+        int newRFTarget;
+
+        // Ensure that the opmode is still active
+
+        // Determine new target position, and pass to motor controller
+        newLFTarget = robot.lfDrive.getCurrentPosition() + (int) (leftInches * COUNTS_PER_INCH);
+        newRFTarget = robot.rfDrive.getCurrentPosition() + (int) (rightInches * COUNTS_PER_INCH);
+
+        robot.lfDrive.setTargetPosition(newLFTarget);
+        robot.rfDrive.setTargetPosition(newRFTarget);
+        robot.lbDrive.setTargetPosition(newLFTarget);
+        robot.rbDrive.setTargetPosition(newRFTarget);
+
+
+        // Turn On RUN_TO_POSITION
+        robot.lfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.rfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.lbDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.rbDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        // reset the timeout time and start motion.
+        runtime.reset();
+        robot.lfDrive.setPower(Math.abs(speed));
+        robot.rfDrive.setPower(Math.abs(speed));
+        robot.lbDrive.setPower(Math.abs(speed));
+        robot.rbDrive.setPower(Math.abs(speed));
     }
 
     @Override

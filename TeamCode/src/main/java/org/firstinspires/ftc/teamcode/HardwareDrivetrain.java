@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 //import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class HardwareDrivetrain {
@@ -56,6 +57,10 @@ public class HardwareDrivetrain {
         public DcMotor lbDrive = null;
         public DcMotor rbDrive = null;
         public DcMotor duckDrive = null;
+        public DcMotor slideMotor = null;
+        public DcMotor harvestMotor = null;
+
+        public Servo dumpServo = null;
 
         /* local OpMode members. */
         HardwareMap hwMap           =  null;
@@ -77,6 +82,11 @@ public class HardwareDrivetrain {
             lbDrive = hwMap.get(DcMotor.class, "lb");
             rbDrive = hwMap.get(DcMotor.class, "rb"); // Set to REVERSE if using AndyMark motors
             duckDrive = hwMap.get(DcMotor.class, "spinnyDDuck");
+            slideMotor = hwMap.get(DcMotor.class, "slidemotor");
+            harvestMotor = hwMap.get(DcMotor.class, "harvester");
+
+            dumpServo = hwMap.get(Servo.class, "dumpservo");
+
             lfDrive.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
             lbDrive.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
 
@@ -94,6 +104,8 @@ public class HardwareDrivetrain {
             lbDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             rbDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             duckDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            harvestMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
         }
