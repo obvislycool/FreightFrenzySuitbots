@@ -5,6 +5,7 @@ import android.graphics.Path;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvWebcam;
@@ -24,7 +25,10 @@ import org.openftc.easyopencv.OpenCvWebcam;
 public class TestDetectorAuto extends LinearOpMode {
 
     OpenCvWebcam webcam;
-
+    private ElapsedTime runtime = new ElapsedTime();
+    private int lCount;
+    private int mCount;
+    private int rCount;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -57,27 +61,64 @@ public class TestDetectorAuto extends LinearOpMode {
             }
         });
 
-        waitForStart();
 
-        detector.processFrame(dfs);
+        while (!isStarted()){//FIXME
+            telemetry.addData("Percent left","");
+            telemetry.addData("Percent middle","");
+            telemetry.addData("Percent right","");
+            telemetry.addData("Position", "");
+            telemetry.update();
 
-        switch (detector.getElementPosition()){
-            case LEFT:
-                telemetry.addData("Left","");
-                break;
-            case MIDDLE:
-                telemetry.addData("Middle","");
-                break;
-            case RIGHT:
-                telemetry.addData("Right","");
-                break;
-            default:
-                break;
         }
 
+        waitForStart();
+
+        //while(!opModeIsActive)
+        //if(opModeIsActive)
+        int samples = 0;
+
+        runtime.reset();
+        while (opModeIsActive() && samples < 50 && runtime.seconds()<8){
+
+            telemetry.addLine("In Loop");
+            switch (detector.getElementPosition()){
+                case LEFT:
+                    lCount++;
+                    telemetry.addLine("Position Detected: LEFT");
+                    telemetry.update();
+                    break;
+                case MIDDLE:
+                    mCount++;
+                    telemetry.addLine("Position Detected: MIDDLE");
+                    telemetry.update();
+                    break;
+                case RIGHT:
+                    rCount++;
+                    telemetry.addLine("Position Detected: RIGHT");
+                    telemetry.update();
+                    break;
+                default:
+                    lCount++;
+                    telemetry.addLine("None");
+                    telemetry.update();
+                    break;
+            }
+            samples++;
+        }
         telemetry.update();
 
-        sleep(300000000); //FIXME
+        if(lCount >= mCount && lCount >= rCount){ //Set elementPosition to correct position
+            telemetry.addLine("RUNNING LEFT AUTO");
+            telemetry.update();
+        }else if (rCount >= mCount){
+            telemetry.addLine("RUNNING RIGHT AUTO");
+            telemetry.update();
+        }else{
+            telemetry.addLine("RUNNING MIDDLE AUTO");
+            telemetry.update();
+        }
+
+        sleep(300000000);
 
         webcam.stopStreaming();
     }

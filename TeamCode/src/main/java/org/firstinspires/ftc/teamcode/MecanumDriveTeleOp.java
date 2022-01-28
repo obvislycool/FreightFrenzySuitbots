@@ -29,7 +29,6 @@ public class MecanumDriveTeleOp extends OpMode {
     private DcMotor duckDrive = null;
     private DcMotor slideMotor = null;
     private DcMotor harvestMotor = null;
-
     private Servo dumpServo = null;
 
     private boolean turboModeOn = false;
@@ -66,10 +65,9 @@ public class MecanumDriveTeleOp extends OpMode {
         rbDrive.setDirection(DcMotorSimple.Direction.REVERSE);
         duckDrive.setDirection(DcMotorSimple.Direction.FORWARD);
         slideMotor.setDirection(DcMotorSimple.Direction.FORWARD);
-
+        harvestMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         robot.rbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
 
         robot.lfDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
@@ -177,6 +175,7 @@ public class MecanumDriveTeleOp extends OpMode {
         rbDrive.setPower((turboModeOn) ? rbPower : rbPower*DONT_DESTROY_MOTORS);
         duckDrive.setPower(duckPower);
 
+
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("Motors", "left front (%.2f), right front (%.2f), left back (%.2f), right back (%.2f)", lfPower, rfPower, lbPower, rbPower);
     }
@@ -196,7 +195,6 @@ public class MecanumDriveTeleOp extends OpMode {
         robot.rfDrive.setTargetPosition(newRFTarget);
         robot.lbDrive.setTargetPosition(newLFTarget);
         robot.rbDrive.setTargetPosition(newRFTarget);
-
 
         // Turn On RUN_TO_POSITION
         robot.lfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
