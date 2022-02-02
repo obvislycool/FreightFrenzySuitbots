@@ -33,6 +33,8 @@ public class MecanumDriveTeleOp extends OpMode {
 
     private boolean turboModeOn = false;
     private boolean pressingA = false;
+    private boolean pressingA2 = false;
+    private boolean dumperDown = false;
 
     private int slidePosition = 0; //0 is start, 1 is first, 2 is second, 3 is third
 
@@ -55,7 +57,7 @@ public class MecanumDriveTeleOp extends OpMode {
         rbDrive = hardwareMap.get(DcMotor.class, "rb");
         duckDrive = hardwareMap.get(DcMotor.class, "spinnyDDuck");
         slideMotor = hardwareMap.get(DcMotor.class, "slidemotor");
-        harvestMotor = hardwareMap.get(DcMotor.class, "harvester");
+        harvestMotor = hardwareMap.get(DcMotor.class, "harvestmotor");
 
         dumpServo = hardwareMap.get(Servo.class, "dumpservo");
 
@@ -67,9 +69,21 @@ public class MecanumDriveTeleOp extends OpMode {
         slideMotor.setDirection(DcMotorSimple.Direction.FORWARD);
         harvestMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
+        robot.lfDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.rfDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.lbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.rbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.duckDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //robot.harvestMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         robot.lfDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.rfDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.lbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.rbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.duckDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //robot.harvestMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         duckDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE); //Stops after input stops
         slideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -96,6 +110,7 @@ public class MecanumDriveTeleOp extends OpMode {
         double rbPower;
         double duckPower;
         double slidePower;
+        double harvestPower;
 
         double dumpPosition;
 
@@ -111,6 +126,23 @@ public class MecanumDriveTeleOp extends OpMode {
             duckPower = DUCK_SPEED;
         }else{
             duckPower = 0;
+        }
+
+        harvestPower = gamepad2.right_stick_y;
+
+        slidePower = gamepad2.left_stick_y;
+
+        if(gamepad2.a && !pressingA2){
+            dumperDown = !dumperDown;
+            pressingA = true;
+        }
+        if(!gamepad2.a){
+            pressingA = false;
+        }
+        if(dumperDown){
+            dumpPosition = .5;
+        }else{
+            dumpPosition = 0;
         }
 
 
@@ -174,6 +206,10 @@ public class MecanumDriveTeleOp extends OpMode {
         lbDrive.setPower((turboModeOn) ? lbPower : lbPower*DONT_DESTROY_MOTORS);
         rbDrive.setPower((turboModeOn) ? rbPower : rbPower*DONT_DESTROY_MOTORS);
         duckDrive.setPower(duckPower);
+        slideMotor.setPower(slidePower);
+        harvestMotor.setPower(harvestPower);
+
+        dumpServo.setPosition(dumpPosition);
 
 
         telemetry.addData("Status", "Run Time: " + runtime.toString());
