@@ -62,14 +62,7 @@ public class TestDetectorAuto extends LinearOpMode {
         });
 
 
-        while (!isStarted()){//FIXME
-            telemetry.addData("Percent left","");
-            telemetry.addData("Percent middle","");
-            telemetry.addData("Percent right","");
-            telemetry.addData("Position", "");
-            telemetry.update();
 
-        }
 
         waitForStart();
 
@@ -78,8 +71,9 @@ public class TestDetectorAuto extends LinearOpMode {
         int samples = 0;
 
         runtime.reset();
-        while (opModeIsActive() && samples < 50 && runtime.seconds()<8){
+        while (opModeIsActive() && samples < 10 && runtime.seconds()<8){
 
+            telemetry.addData("Runtime", runtime.seconds());
             telemetry.addLine("In Loop");
             switch (detector.getElementPosition()){
                 case LEFT:
@@ -104,8 +98,10 @@ public class TestDetectorAuto extends LinearOpMode {
                     break;
             }
             samples++;
+            sleep(50);
         }
         telemetry.update();
+        webcam.stopStreaming();
 
         if(lCount >= mCount && lCount >= rCount){ //Set elementPosition to correct position
             telemetry.addLine("RUNNING LEFT AUTO");
@@ -120,6 +116,6 @@ public class TestDetectorAuto extends LinearOpMode {
 
         sleep(300000000);
 
-        webcam.stopStreaming();
+
     }
 }
