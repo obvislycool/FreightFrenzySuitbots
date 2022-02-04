@@ -83,7 +83,7 @@ public class HardwareDrivetrain {
             rbDrive = hwMap.get(DcMotor.class, "rb"); // Set to REVERSE if using AndyMark motors
             duckDrive = hwMap.get(DcMotor.class, "spinnyDDuck");
             slideMotor = hwMap.get(DcMotor.class, "slidemotor");
-            harvestMotor = hwMap.get(DcMotor.class, "harvester");
+            harvestMotor = hwMap.get(DcMotor.class, "harvestmotor");
 
             dumpServo = hwMap.get(Servo.class, "dumpservo");
 
