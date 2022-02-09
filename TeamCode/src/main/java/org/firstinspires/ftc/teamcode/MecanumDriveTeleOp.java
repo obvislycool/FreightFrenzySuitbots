@@ -33,8 +33,8 @@ public class MecanumDriveTeleOp extends OpMode {
 
     private boolean turboModeOn = false;
     private boolean pressingA = false;
-    private boolean pressingA2 = false;
-    private boolean dumperDown = false;
+    //private boolean pressingA2 = false;
+    //private boolean dumperDown = false;
 
     private int slidePosition = 0; //0 is start, 1 is first, 2 is second, 3 is third
 
@@ -132,14 +132,8 @@ public class MecanumDriveTeleOp extends OpMode {
 
         slidePower = gamepad2.left_stick_y;
 
-        if(gamepad2.a && !pressingA2){
-            dumperDown = !dumperDown;
-            pressingA = true;
-        }
-        if(!gamepad2.a){
-            pressingA = false;
-        }
-        if(dumperDown){
+
+        if(gamepad2.a){
             dumpPosition = .5;
         }else{
             dumpPosition = 0;
