@@ -134,9 +134,10 @@ public class MecanumDriveTeleOp extends OpMode {
 
 
         if(gamepad2.a){
-            dumpPosition = .5;
-        }else{
             dumpPosition = 0;
+        }
+        else{
+            dumpPosition = .5;
         }
 
 
