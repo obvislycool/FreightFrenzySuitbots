@@ -128,16 +128,16 @@ public class MecanumDriveTeleOp extends OpMode {
             duckPower = 0;
         }
 
-        harvestPower = gamepad2.right_stick_y;
+        harvestPower = gamepad2.right_stick_y * -.9;
 
-        slidePower = gamepad2.left_stick_y;
+        slidePower = gamepad2.left_stick_y * -.7;
 
 
         if(gamepad2.a){
             dumpPosition = 0;
         }
         else{
-            dumpPosition = .5;
+            dumpPosition = .45;
         }
 
 
