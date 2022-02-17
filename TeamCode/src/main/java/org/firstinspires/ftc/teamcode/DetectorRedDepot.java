@@ -151,8 +151,8 @@ public class DetectorRedDepot extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, -5, 5, 3); //turn to hub
         encoderDrive(DRIVE_SPEED,  24,  24, 6.0);  //drive to hub
-        encoderDrive(TURN_SPEED,   -40, +40, 10.0);  //180 turn
-        encoderDrive(0.2, -2, -2, 3);  //back into hub
+        encoderDrive(TURN_SPEED,   -48, +48, 10.0);  //180 turn
+        encoderDrive(0.2, -5, -5, 3);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -160,28 +160,28 @@ public class DetectorRedDepot extends LinearOpMode {
         if(lCount >= mCount && lCount >= rCount){ //Set slide to correct position and dump
             telemetry.addLine("RUNNING LEFT AUTO");
             telemetry.update();
-            slide(300);
-            dump(0);
-            slide(-300);
-        }else if (rCount >= mCount){
-            telemetry.addLine("RUNNING RIGHT AUTO");
-            telemetry.update();
             slide(600);
             dump(0);
             slide(-600);
+        }else if (rCount >= mCount){
+            telemetry.addLine("RUNNING RIGHT AUTO");
+            telemetry.update();
+            slide(1200);
+            dump(0);
+            slide(-1200);
         }else{
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
-            slide(450);
+            slide(900);
             dump(0);
-            slide(-450);
+            slide(-900);
         }
 
         dump(0.45); //reset dumper
 
-        encoderDrive(DRIVE_SPEED,  5,  5, 6.0); //drive away from hub
-        encoderDrive(TURN_SPEED,  14,  -14, 6.0); //turn to face away from depot
-        encoderDrive(1,  -30,  -30, 7.0); //back into depot full speed
+        encoderDrive(DRIVE_SPEED,  7,  7, 6.0); //drive away from hub
+        encoderDrive(TURN_SPEED,  38,  -38, 6.0); //turn to face away from depot
+        encoderDrive(1,  -40,  -40, 7.0); //back into depot full speed
 
         sleep(1000);
         telemetry.addData("Path", "Complete");
