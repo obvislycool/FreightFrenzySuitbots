@@ -22,7 +22,7 @@ import org.openftc.easyopencv.OpenCvPipeline;
 import org.openftc.easyopencv.OpenCvWebcam;
 
 //@Disabled //Comment out to run
-@Autonomous(name = "TestDetectorAuto", group = "Auto")
+@Autonomous(name = "DetectorRedDepot", group = "Auto")
 public class DetectorRedDepot extends LinearOpMode {
 
     OpenCvWebcam webcam;
