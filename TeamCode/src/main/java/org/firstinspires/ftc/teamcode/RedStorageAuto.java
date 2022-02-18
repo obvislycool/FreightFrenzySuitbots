@@ -76,11 +76,15 @@ public class RedStorageAuto extends LinearOpMode {
         robot.lbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.rbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-
         robot.lfDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.rfDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.lbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.rbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        robot.rbDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        robot.rfDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        robot.lfDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        robot.lbDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // Send telemetry message to indicate successful Encoder reset
         telemetry.addData("Path0",  "Starting at %7d :%7d",
@@ -93,12 +97,12 @@ public class RedStorageAuto extends LinearOpMode {
 
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
-        encoderDrive(DRIVE_SPEED,  24,  24, 6.0);  // S1: Forward 47 Inches with 5 Sec timeout
-        encoderDrive(TURN_SPEED,   -32, +32, 8.0);  // S2: Turn Left 12 Inches with 4 Sec timeout
-        encoderDrive(0.2, 28, 28, 10.0);  // S3: Reverse 24 Inches with 4 Sec timeout
+        encoderDrive(0.5,  24,  24, 6.0);  // S1: Forward 47 Inches with 5 Sec timeout
+        encoderDrive(0.3,   -32, +32, 8.0);  // S2: Turn Left 12 Inches with 4 Sec timeout
+        encoderDrive(0.2, 29, 29, 10.0);  // S3: Reverse 24 Inches with 4 Sec timeout
         duckSpin(COUNTERCLOCKWISE,6000);
         encoderDrive(TURN_SPEED,   +32, -32, 8.0);
-        encoderDrive(DRIVE_SPEED,  20,  20, 6.0);
+        encoderDrive(DRIVE_SPEED,  23,  23, 6.0);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
 
@@ -109,10 +113,10 @@ public class RedStorageAuto extends LinearOpMode {
         robot.rbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.lbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        robot.rfDrive.setTargetPosition(200);
-        robot.lfDrive.setTargetPosition(200);
-        robot.rbDrive.setTargetPosition(-200);
-        robot.lbDrive.setTargetPosition(-200);
+        robot.rfDrive.setTargetPosition(350);
+        robot.lfDrive.setTargetPosition(350);
+        robot.rbDrive.setTargetPosition(-350);
+        robot.lbDrive.setTargetPosition(-350);
 
         robot.rfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.lfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);

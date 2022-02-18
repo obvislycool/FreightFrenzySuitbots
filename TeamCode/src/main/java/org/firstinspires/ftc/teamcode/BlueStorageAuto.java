@@ -82,6 +82,11 @@ public class BlueStorageAuto extends LinearOpMode {
         robot.lbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.rbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+        robot.rbDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        robot.rfDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        robot.lfDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        robot.lbDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
         // Send telemetry message to indicate successful Encoder reset
         telemetry.addData("Path0",  "Starting at %7d :%7d",
                 robot.lfDrive.getCurrentPosition(),
