@@ -95,12 +95,48 @@ public class RedStorageAuto extends LinearOpMode {
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
         encoderDrive(DRIVE_SPEED,  24,  24, 6.0);  // S1: Forward 47 Inches with 5 Sec timeout
         encoderDrive(TURN_SPEED,   -32, +32, 8.0);  // S2: Turn Left 12 Inches with 4 Sec timeout
-        encoderDrive(0.2, 30, 30, 10.0);  // S3: Reverse 24 Inches with 4 Sec timeout
+        encoderDrive(0.2, 28, 28, 10.0);  // S3: Reverse 24 Inches with 4 Sec timeout
         duckSpin(COUNTERCLOCKWISE,6000);
         encoderDrive(TURN_SPEED,   +32, -32, 8.0);
         encoderDrive(DRIVE_SPEED,  20,  20, 6.0);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
+
+        //JANKY STRAFE
+
+        robot.rfDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.lfDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.rbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.lbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        robot.rfDrive.setTargetPosition(200);
+        robot.lfDrive.setTargetPosition(200);
+        robot.rbDrive.setTargetPosition(-200);
+        robot.lbDrive.setTargetPosition(-200);
+
+        robot.rfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.lfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.rbDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.lbDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        robot.rfDrive.setPower(0.3);
+        robot.lfDrive.setPower(0.3);
+        robot.rbDrive.setPower(0.3);
+        robot.lbDrive.setPower(0.3);
+
+        while (opModeIsActive() && robot.rfDrive.isBusy() && robot.lfDrive.isBusy() && robot.rbDrive.isBusy() && robot.lbDrive.isBusy()) {
+            sleep(0);
+        }
+        robot.rfDrive.setPower(0);
+        robot.lfDrive.setPower(0);
+        robot.rbDrive.setPower(0);
+        robot.lbDrive.setPower(0);
+
+        robot.rfDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.lfDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.rbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.lbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
 
 
         sleep(1000);     // pause for servos to move
