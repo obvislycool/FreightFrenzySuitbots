@@ -89,7 +89,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
             // Note: Reverse movement is obtained by setting a negative distance (not speed)
             encoderDrive(DRIVE_SPEED,  17,  17, 6.0);  // S1: Forward 47 Inches with 5 Sec timeout
             encoderDrive(TURN_SPEED,   19, -19, 8.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
-            encoderDrive(1.0, 60, 60, 10.0);  // S3: Reverse 24 Inches with 4 Sec timeout
+            encoderDrive(1.0, 60, 60, 10.0);  // S3: Reverse 24 Inches with 4 Sec timeo
 
             sleep(1000);     // pause for servos to move
 
