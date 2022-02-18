@@ -117,7 +117,7 @@ public class DetectorRedDepot extends LinearOpMode {
         int samples = 0;
 
         runtime.reset();
-        while (opModeIsActive() && samples < 10 && runtime.seconds()<8){
+        while (opModeIsActive() && samples < 100 && runtime.seconds()<7.5){
 
             telemetry.addData("Runtime", runtime.seconds());
             telemetry.addLine("In Loop");
@@ -138,7 +138,7 @@ public class DetectorRedDepot extends LinearOpMode {
                     telemetry.update();
                     break;
                 default:
-                    lCount++;
+                    rCount++;
                     telemetry.addLine("None");
                     telemetry.update();
                     break;
@@ -152,7 +152,7 @@ public class DetectorRedDepot extends LinearOpMode {
         encoderDrive(TURN_SPEED, -10, 10, 3); //turn to hub
         encoderDrive(DRIVE_SPEED,  24,  24, 6.0);  //drive to hub
         encoderDrive(TURN_SPEED,   -42, +42, 10.0);  //180 turn
-        encoderDrive(0.2, -9, -9, 3);  //back into hub
+        encoderDrive(0.2, -9.25, -9.25, 3);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -160,10 +160,10 @@ public class DetectorRedDepot extends LinearOpMode {
         if(lCount >= mCount && lCount >= rCount){ //Set slide to correct position and dump
             telemetry.addLine("RUNNING LEFT AUTO");
             telemetry.update();
-            slide(500);
+            slide(600);
             dump(0);
             dump(0.45); //reset dumper
-            slide(-500);
+            slide(-600);
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
@@ -180,8 +180,8 @@ public class DetectorRedDepot extends LinearOpMode {
             slide(-1600);
         }
 
-    encoderDrive(DRIVE_SPEED,  14,  14, 6.0); //drive away from hub
-        encoderDrive(TURN_SPEED,  29,  -29, 6.0); //turn to face away from depot
+    encoderDrive(DRIVE_SPEED,  16,  16, 6.0); //drive away from hub
+        encoderDrive(TURN_SPEED,  31,  -31, 6.0); //turn to face away from depot
         encoderDrive(1,  -60,  -60, 7.0); //back into depot full speed
 
         sleep(1000);

@@ -117,7 +117,7 @@ public class DetectorBlueDepot extends LinearOpMode {
         int samples = 0;
 
         runtime.reset();
-        while (opModeIsActive() && samples < 10 && runtime.seconds()<8){
+        while (opModeIsActive() && samples < 100 && runtime.seconds()<7.5){
 
             telemetry.addData("Runtime", runtime.seconds());
             telemetry.addLine("In Loop");
@@ -150,8 +150,8 @@ public class DetectorBlueDepot extends LinearOpMode {
         webcam.stopStreaming();
 
         encoderDrive(TURN_SPEED, 5, -5, 3); //turn to hub
-        encoderDrive(DRIVE_SPEED,  24,  24, 6.0);  //drive to hub
-        encoderDrive(TURN_SPEED,   -48, +48, 10.0);  //180 turn
+        encoderDrive(DRIVE_SPEED,  23,  23, 6.0);  //drive to hub
+        encoderDrive(TURN_SPEED,   -44, +44, 10.0);  //180 turn
         encoderDrive(0.2, -5, -5, 3);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
@@ -166,22 +166,22 @@ public class DetectorBlueDepot extends LinearOpMode {
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
-            slide(1200);
+            slide(2200);
             dump(0);
-            slide(-1200);
+            slide(-2200);
         }else{
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
-            slide(900);
+            slide(1600);
             dump(0);
-            slide(-900);
+            slide(-1600);
         }
 
         dump(0.45); //reset dumper
 
-        encoderDrive(DRIVE_SPEED,  7,  7, 6.0); //drive away from hub
-        encoderDrive(TURN_SPEED,  -38,  38, 6.0); //turn to face away from depot
-        encoderDrive(1,  -40,  -40, 7.0); //back into depot full speed
+        encoderDrive(DRIVE_SPEED,  14,  14, 6.0); //drive away from hub
+        encoderDrive(TURN_SPEED,  -31,  31, 6.0); //turn to face away from depot
+        encoderDrive(1,  -60,  -60, 7.0); //back into depot full speed
 
         sleep(1000);
         telemetry.addData("Path", "Complete");
@@ -198,7 +198,7 @@ public class DetectorBlueDepot extends LinearOpMode {
         robot.slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.slideMotor.setTargetPosition(ticks);
         robot.slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.slideMotor.setPower(0.7);
+        robot.slideMotor.setPower(0.3);
         while (opModeIsActive()&& robot.slideMotor.isBusy()) {
             sleep(0);
         }
