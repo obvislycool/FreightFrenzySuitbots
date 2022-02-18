@@ -19,14 +19,14 @@ public class ShippingElementDetector extends OpenCvPipeline {
     Telemetry telemetry;
     Mat mat = new Mat();
     static final Rect LEFT_ROI = new Rect(
-            new Point(0, 0),
-            new Point(80, 120));
+            new Point(0, -60),
+            new Point(106, 120));
     static final Rect MIDDLE_ROI = new Rect(
-            new Point(80, 0),
-            new Point(160, 120));
+            new Point(106, -60),
+            new Point(213, 120));
     static final Rect RIGHT_ROI = new Rect(
-            new Point(160, 0),
-            new Point(240, 120));
+            new Point(213, -60),
+            new Point(320, 120));
 
     public ShippingElementDetector(Telemetry t) { telemetry = t; } //Constructor
 
