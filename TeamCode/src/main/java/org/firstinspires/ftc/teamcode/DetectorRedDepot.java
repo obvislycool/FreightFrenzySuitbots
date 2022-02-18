@@ -149,10 +149,10 @@ public class DetectorRedDepot extends LinearOpMode {
         telemetry.update();
         webcam.stopStreaming();
 
-        encoderDrive(TURN_SPEED, -8, 8, 3); //turn to hub
+        encoderDrive(TURN_SPEED, -10, 10, 3); //turn to hub
         encoderDrive(DRIVE_SPEED,  24,  24, 6.0);  //drive to hub
-        encoderDrive(TURN_SPEED,   -47, +47, 10.0);  //180 turn
-        encoderDrive(0.2, -8.5, -8.5, 3);  //back into hub
+        encoderDrive(TURN_SPEED,   -42, +42, 10.0);  //180 turn
+        encoderDrive(0.2, -9, -9, 3);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -180,8 +180,8 @@ public class DetectorRedDepot extends LinearOpMode {
             slide(-1600);
         }
 
-        encoderDrive(DRIVE_SPEED,  7,  7, 6.0); //drive away from hub
-        encoderDrive(TURN_SPEED,  32,  -32, 6.0); //turn to face away from depot
+    encoderDrive(DRIVE_SPEED,  14,  14, 6.0); //drive away from hub
+        encoderDrive(TURN_SPEED,  29,  -29, 6.0); //turn to face away from depot
         encoderDrive(1,  -60,  -60, 7.0); //back into depot full speed
 
         sleep(1000);
@@ -199,7 +199,7 @@ public class DetectorRedDepot extends LinearOpMode {
         robot.slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.slideMotor.setTargetPosition(ticks);
         robot.slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.slideMotor.setPower(0.7);
+        robot.slideMotor.setPower(0.3);
         while (opModeIsActive()&& robot.slideMotor.isBusy()) {
             sleep(0);
         }

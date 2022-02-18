@@ -130,7 +130,7 @@ public class MecanumDriveTeleOp extends OpMode {
 
         harvestPower = gamepad2.right_stick_y * -.9;
 
-        slidePower = gamepad2.left_stick_y * -.7;
+        slidePower = gamepad2.left_stick_y * -.4;
 
 
         if(gamepad2.a){
