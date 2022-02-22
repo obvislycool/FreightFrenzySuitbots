@@ -150,9 +150,9 @@ public class DetectorRedDepot extends LinearOpMode {
         webcam.stopStreaming();
 
         encoderDrive(TURN_SPEED, -10, 10, 3); //turn to hub
-        encoderDrive(DRIVE_SPEED,  24,  24, 6.0);  //drive to hub
+        encoderDrive(DRIVE_SPEED,  20,  20, 6.0);  //drive to hub
         encoderDrive(TURN_SPEED,   -42, +42, 10.0);  //180 turn
-        encoderDrive(0.2, -9.25, -9.25, 3);  //back into hub
+        encoderDrive(0.2, -8.5, -8.5, 3);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -160,10 +160,10 @@ public class DetectorRedDepot extends LinearOpMode {
         if(lCount >= mCount && lCount >= rCount){ //Set slide to correct position and dump
             telemetry.addLine("RUNNING LEFT AUTO");
             telemetry.update();
-            slide(600);
+            slide(450);
             dump(0);
             dump(0.45); //reset dumper
-            slide(-600);
+            slide(-450);
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
@@ -174,14 +174,14 @@ public class DetectorRedDepot extends LinearOpMode {
         }else{
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
-            slide(1600);
+            slide(1450);
             dump(0);
             dump(0.45); //reset dumper
-            slide(-1600);
+            slide(-1450);
         }
 
-    encoderDrive(DRIVE_SPEED,  16,  16, 6.0); //drive away from hub
-        encoderDrive(TURN_SPEED,  31,  -31, 6.0); //turn to face away from depot
+    encoderDrive(DRIVE_SPEED,  15,  15, 6.0); //drive away from hub
+        encoderDrive(TURN_SPEED,  26,  -26, 6.0); //turn to face away from depot
         encoderDrive(1,  -60,  -60, 7.0); //back into depot full speed
 
         sleep(1000);
