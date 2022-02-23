@@ -6,6 +6,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.AnalogInput;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -30,6 +31,7 @@ public class MecanumDriveTeleOp extends OpMode {
     private DcMotor slideMotor = null;
     private DcMotor harvestMotor = null;
     private Servo dumpServo = null;
+    //private AnalogInput limitSensor = null;
 
     private boolean turboModeOn = false;
     private boolean pressingA = false;
@@ -58,6 +60,8 @@ public class MecanumDriveTeleOp extends OpMode {
         duckDrive = hardwareMap.get(DcMotor.class, "spinnyDDuck");
         slideMotor = hardwareMap.get(DcMotor.class, "slidemotor");
         harvestMotor = hardwareMap.get(DcMotor.class, "harvestmotor");
+
+        //limitSensor = hardwareMap.get(AnalogInput.class, "limitsensor");
 
         dumpServo = hardwareMap.get(Servo.class, "dumpservo");
 
@@ -98,15 +102,6 @@ public class MecanumDriveTeleOp extends OpMode {
     public void start() {
         runtime.reset();
 
-        //robot.slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        //robot.slideMotor.setTargetPosition(200);
-        //robot.slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        //robot.slideMotor.setPower(0.3);
-        //while (opModeIsActive()&& robot.slideMotor.isBusy()) {
-        //    sleep(0);
-        //}
-        //robot.slideMotor.setPower(0);
-        //robot.slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         //robot.slideMotor.setPower(-0.1);
         //while(buttonNotPressed && opModeActive && ticks < 350){
@@ -149,6 +144,9 @@ public class MecanumDriveTeleOp extends OpMode {
         harvestPower = gamepad2.right_stick_y * -.9;
 
         slidePower = gamepad2.left_stick_y * -.4;
+        //if(slidePower<0 && limitSensor.getVoltage()!=0){
+        //    slidePower=0;
+        //}
 
 
         if(gamepad2.a){

@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.hardware.AnalogInput;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 //import com.qualcomm.robotcore.hardware.Servo;
@@ -60,6 +61,8 @@ public class HardwareDrivetrain {
         public DcMotor slideMotor = null;
         public DcMotor harvestMotor = null;
 
+        //public AnalogInput limitSensor = null;
+
         public Servo dumpServo = null;
 
         /* local OpMode members. */
@@ -85,6 +88,8 @@ public class HardwareDrivetrain {
             slideMotor = hwMap.get(DcMotor.class, "slidemotor");
             harvestMotor = hwMap.get(DcMotor.class, "harvestmotor");
 
+            //limitSensor = hwMap.get(AnalogInput.class, "limitsensor");
+
             dumpServo = hwMap.get(Servo.class, "dumpservo");
 
             lfDrive.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
@@ -106,6 +111,14 @@ public class HardwareDrivetrain {
             duckDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             harvestMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+            lfDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            rfDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            lbDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            rbDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            duckDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            slideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            harvestMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
         }
