@@ -97,6 +97,24 @@ public class MecanumDriveTeleOp extends OpMode {
     @Override
     public void start() {
         runtime.reset();
+
+        //robot.slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //robot.slideMotor.setTargetPosition(200);
+        //robot.slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        //robot.slideMotor.setPower(0.3);
+        //while (opModeIsActive()&& robot.slideMotor.isBusy()) {
+        //    sleep(0);
+        //}
+        //robot.slideMotor.setPower(0);
+        //robot.slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        //robot.slideMotor.setPower(-0.1);
+        //while(buttonNotPressed && opModeActive && ticks < 350){
+        //    sleep(0)
+        //}
+        //robot.slideMotor.setPower(0);
+        //robot.slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //robot.slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
 
