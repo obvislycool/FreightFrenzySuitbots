@@ -160,24 +160,24 @@ public class DetectorBlueDepot extends LinearOpMode {
         if(lCount >= mCount && lCount >= rCount){ //Set slide to correct position and dump
             telemetry.addLine("RUNNING LEFT AUTO");
             telemetry.update();
-            slide(450);
+            slide(400);
             dump(0);
             dump(0.45); //reset dumper
-            slide(-450);
+            slide(-400);
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
-            slide(2200);
+            slide(2300);
             dump(0);
             dump(0.45); //reset dumper
-            slide(-2200);
+            slide(-2300);
         }else{
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
-            slide(1450);
+            slide(1400);
             dump(0);
             dump(0.45); //reset dumper
-            slide(-1450);
+            slide(-1400);
         }
 
         encoderDrive(DRIVE_SPEED,  14,  14, 6.0); //drive away from hub

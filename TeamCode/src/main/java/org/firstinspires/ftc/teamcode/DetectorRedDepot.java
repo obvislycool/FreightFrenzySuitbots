@@ -152,7 +152,7 @@ public class DetectorRedDepot extends LinearOpMode {
         encoderDrive(TURN_SPEED, -10, 10, 3); //turn to hub
         encoderDrive(DRIVE_SPEED,  20,  20, 6.0);  //drive to hub
         encoderDrive(TURN_SPEED,   -42, +42, 10.0);  //180 turn
-        encoderDrive(0.2, -8.5, -8.5, 3);  //back into hub
+        encoderDrive(0.2, -8.25, -8.25, 3);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -160,24 +160,24 @@ public class DetectorRedDepot extends LinearOpMode {
         if(lCount >= mCount && lCount >= rCount){ //Set slide to correct position and dump
             telemetry.addLine("RUNNING LEFT AUTO");
             telemetry.update();
-            slide(450);
+            slide(400);
             dump(0);
             dump(0.45); //reset dumper
-            slide(-450);
+            slide(-400);
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
-            slide(2200);
+            slide(2300);
             dump(0);
             dump(0.45); //reset dumper
-            slide(-2200);
+            slide(-2300);
         }else{
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
-            slide(1450);
+            slide(1400);
             dump(0);
             dump(0.45); //reset dumper
-            slide(-1450);
+            slide(-1400);
         }
 
     encoderDrive(DRIVE_SPEED,  15,  15, 6.0); //drive away from hub
