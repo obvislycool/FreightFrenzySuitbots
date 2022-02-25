@@ -152,7 +152,7 @@ public class DetectorBlueDepot extends LinearOpMode {
         encoderDrive(TURN_SPEED, 5, -5, 3); //turn to hub
         encoderDrive(DRIVE_SPEED,  21,  21, 6.0);  //drive to hub
         encoderDrive(TURN_SPEED,   -38, +38, 10.0);  //180 turn
-        encoderDrive(0.2, -7, -7, 3);  //back into hub
+        encoderDrive(0.2, -6.5, -6.5, 3);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
