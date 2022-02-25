@@ -160,10 +160,10 @@ public class DetectorRedStorage extends LinearOpMode {
         if(lCount >= mCount && lCount >= rCount){ //Set slide to correct position and dump
             telemetry.addLine("RUNNING LEFT AUTO");
             telemetry.update();
-            slide(400);
+            slide(500);
             dump(0);
             dump(0.45); //reset dumper
-            slide(-400);
+            slide(-500);
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();

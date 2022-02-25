@@ -149,10 +149,10 @@ public class DetectorBlueStorage extends LinearOpMode {
         telemetry.update();
         webcam.stopStreaming();
 
-        encoderDrive(TURN_SPEED, -7, 7, 3); //turn to hub
-        encoderDrive(DRIVE_SPEED,  20,  20, 6.0);  //drive to hub
+        encoderDrive(TURN_SPEED, -8, 8, 3); //turn to hub
+        encoderDrive(DRIVE_SPEED,  22,  22, 6.0);  //drive to hub
         encoderDrive(TURN_SPEED,   -42, +42, 10.0);  //180 turn
-        encoderDrive(0.2, -8.25, -8.25, 3);  //back into hub
+        encoderDrive(0.2, -8, -8, 3);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -160,10 +160,10 @@ public class DetectorBlueStorage extends LinearOpMode {
         if(lCount >= mCount && lCount >= rCount){ //Set slide to correct position and dump
             telemetry.addLine("RUNNING LEFT AUTO");
             telemetry.update();
-            slide(400);
+            slide(500);
             dump(0);
             dump(0.45); //reset dumper
-            slide(-400);
+            slide(-500);
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
@@ -180,7 +180,9 @@ public class DetectorBlueStorage extends LinearOpMode {
             slide(-1400);
         }
 
-        encoderDrive(0.2, 29, 29, 10.0);  // go to wheel
+        encoderDrive(DRIVE_SPEED, 2, 2, 10.0);
+        encoderDrive(TURN_SPEED, -5, 5, 3);
+        encoderDrive(0.4, 29, 29, 10.0);  // go to wheel
         duckSpin(COUNTERCLOCKWISE,6000);
         encoderDrive(TURN_SPEED,   -16, 16, 8.0);
         encoderDrive(DRIVE_SPEED,  23,  23, 6.0);

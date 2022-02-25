@@ -152,7 +152,7 @@ public class DetectorBlueDepot extends LinearOpMode {
         encoderDrive(TURN_SPEED, 5, -5, 3); //turn to hub
         encoderDrive(DRIVE_SPEED,  21,  21, 6.0);  //drive to hub
         encoderDrive(TURN_SPEED,   -37.5, +37.5, 10.0);  //180 turn
-        encoderDrive(0.2, -6.5, -6.5, 3);  //back into hub
+        encoderDrive(0.2, -6.25, -6.25, 3);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -160,10 +160,10 @@ public class DetectorBlueDepot extends LinearOpMode {
         if(lCount >= mCount && lCount >= rCount){ //Set slide to correct position and dump
             telemetry.addLine("RUNNING LEFT AUTO");
             telemetry.update();
-            slide(400);
+            slide(500);
             dump(0);
             dump(0.45); //reset dumper
-            slide(-400);
+            slide(-500);
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
@@ -182,7 +182,7 @@ public class DetectorBlueDepot extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED,  15,  15, 6.0); //drive away from hub
         encoderDrive(TURN_SPEED,  -26,  26, 6.0); //turn to face away from depot
-        encoderDrive(1,  -70,  -70, 7.0); //back into depot full speed
+        encoderDrive(1,  -65,  -65, 7.0); //back into depot full speed
 
         sleep(1000);
         telemetry.addData("Path", "Complete");
