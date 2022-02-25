@@ -182,7 +182,7 @@ public class DetectorRedDepot extends LinearOpMode {
 
     encoderDrive(DRIVE_SPEED,  15,  15, 6.0); //drive away from hub
         encoderDrive(TURN_SPEED,  26,  -26, 6.0); //turn to face away from depot
-        encoderDrive(1,  -60,  -60, 7.0); //back into depot full speed
+        encoderDrive(1,  -70,  -70, 7.0); //back into depot full speed
 
         sleep(1000);
         telemetry.addData("Path", "Complete");
