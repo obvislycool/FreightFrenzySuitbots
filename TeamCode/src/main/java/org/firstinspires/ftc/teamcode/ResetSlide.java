@@ -22,7 +22,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvPipeline;
 import org.openftc.easyopencv.OpenCvWebcam;
 
-//@Disabled //Comment out to run
+@Disabled //Comment out to run
 @Autonomous(name = "ResetSlide", group = "Auto")
 public class ResetSlide extends LinearOpMode {
 
@@ -45,9 +45,9 @@ public class ResetSlide extends LinearOpMode {
         robot.slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.slideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         robot.slideMotor.setPower(-0.1);
-        while(robot.limitSensor.getVoltage()==0 && opModeIsActive() && runtime.seconds()<3){
-            sleep(0);
-        }
+        //while(robot.limitSensor.getVoltage()==0 && opModeIsActive() && runtime.seconds()<3){
+        //    sleep(0);
+        //}
         robot.slideMotor.setPower(0);
         robot.slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);

@@ -77,7 +77,6 @@ public class MecanumDriveTeleOp extends OpMode {
         robot.rfDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.lbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.rbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.duckDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //robot.harvestMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
@@ -85,7 +84,6 @@ public class MecanumDriveTeleOp extends OpMode {
         robot.rfDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.lbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.rbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.duckDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         //robot.harvestMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
@@ -141,7 +139,7 @@ public class MecanumDriveTeleOp extends OpMode {
             duckPower = 0;
         }
 
-        harvestPower = gamepad2.right_stick_y * -.9;
+        harvestPower = gamepad2.right_stick_y * -1;
 
         slidePower = gamepad2.left_stick_y * -.4;
         //if(slidePower<0 && limitSensor.getVoltage()!=0){

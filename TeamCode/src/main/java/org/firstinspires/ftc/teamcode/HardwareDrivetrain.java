@@ -104,10 +104,10 @@ public class HardwareDrivetrain {
 
             // Set all motors to run without encoders.
             // May want to use RUN_USING_ENCODERS if encoders are installed.
-            lfDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            rfDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            lbDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            rbDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            lfDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            rfDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            lbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            rbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             duckDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             harvestMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
