@@ -150,9 +150,9 @@ public class DetectorBlueStorage extends LinearOpMode {
         webcam.stopStreaming();
 
         encoderDrive(TURN_SPEED, -8, 8, 3); //turn to hub
-        encoderDrive(DRIVE_SPEED,  22,  22, 6.0);  //drive to hub
-        encoderDrive(TURN_SPEED,   -42, +42, 10.0);  //180 turn
-        encoderDrive(0.2, -8, -8, 3);  //back into hub
+        encoderDrive(DRIVE_SPEED,  22,  22, 5);  //drive to hub
+        encoderDrive(TURN_SPEED,   -44, +44, 7);  //180 turn
+        encoderDrive(0.3, -8, -8, 4);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -180,17 +180,18 @@ public class DetectorBlueStorage extends LinearOpMode {
             slide(-1400);
         }
 
-        encoderDrive(DRIVE_SPEED, 2, 2, 10.0);
+        encoderDrive(DRIVE_SPEED, 2, 2, 2);
         encoderDrive(TURN_SPEED, -5, 5, 3);
-        encoderDrive(0.4, 29, 29, 10.0);  // go to wheel
+        encoderDrive(DRIVE_SPEED, 32, 32, 10.0);  // go to wheel
         duckSpin(COUNTERCLOCKWISE,6000);
-        encoderDrive(TURN_SPEED,   -16, 16, 8.0);
-        encoderDrive(DRIVE_SPEED,  23,  23, 6.0);
+        encoderDrive(TURN_SPEED,   -16, 16, 6);
+        encoderDrive(DRIVE_SPEED,  23,  23, 5);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
 
         //JANKY STRAFE
 
+        /*
         robot.rfDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.lfDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.rbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -224,6 +225,8 @@ public class DetectorBlueStorage extends LinearOpMode {
         robot.rbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.lbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+
+         */
         sleep(1000);
         telemetry.addData("Path", "Complete");
         telemetry.update();
