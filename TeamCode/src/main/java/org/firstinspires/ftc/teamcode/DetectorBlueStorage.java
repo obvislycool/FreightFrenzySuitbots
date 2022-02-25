@@ -152,7 +152,7 @@ public class DetectorBlueStorage extends LinearOpMode {
         encoderDrive(TURN_SPEED, -8, 8, 3); //turn to hub
         encoderDrive(DRIVE_SPEED,  22,  22, 5);  //drive to hub
         encoderDrive(TURN_SPEED,   -44, +44, 7);  //180 turn
-        encoderDrive(0.3, -8, -8, 4);  //back into hub
+        encoderDrive(0.3, -9, -9, 4);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -175,13 +175,14 @@ public class DetectorBlueStorage extends LinearOpMode {
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
             slide(1400);
+
             dump(0);
             dump(0.45); //reset dumper
             slide(-1400);
         }
 
         encoderDrive(DRIVE_SPEED, 2, 2, 2);
-        encoderDrive(TURN_SPEED, -5, 5, 3);
+        encoderDrive(TURN_SPEED, -3, 3, 32);
         encoderDrive(DRIVE_SPEED, 32, 32, 10.0);  // go to wheel
         duckSpin(COUNTERCLOCKWISE,6000);
         encoderDrive(TURN_SPEED,   -16, 16, 6);
