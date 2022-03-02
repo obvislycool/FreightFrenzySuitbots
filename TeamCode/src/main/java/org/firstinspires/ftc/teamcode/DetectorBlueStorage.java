@@ -117,7 +117,7 @@ public class DetectorBlueStorage extends LinearOpMode {
         int samples = 0;
 
         runtime.reset();
-        while (opModeIsActive() && samples < 100 && runtime.seconds()<7.5){
+        while (opModeIsActive() && samples < 15 && runtime.seconds()<2.5){
 
             telemetry.addData("Runtime", runtime.seconds());
             telemetry.addLine("In Loop");
@@ -149,10 +149,10 @@ public class DetectorBlueStorage extends LinearOpMode {
         telemetry.update();
         webcam.stopStreaming();
 
-        encoderDrive(TURN_SPEED, -8, 8, 3); //turn to hub
-        encoderDrive(DRIVE_SPEED,  22,  22, 5);  //drive to hub
-        encoderDrive(TURN_SPEED,   -44, +44, 7);  //180 turn
-        encoderDrive(0.3, -9, -9, 4);  //back into hub
+        encoderDrive(TURN_SPEED, -8, 8, 2); //turn to hub
+        encoderDrive(DRIVE_SPEED,  22,  22, 3);  //drive to hub
+        encoderDrive(TURN_SPEED,   -44, +44, 4);  //180 turn
+        encoderDrive(0.4, -10, -10, 3);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -162,56 +162,55 @@ public class DetectorBlueStorage extends LinearOpMode {
             telemetry.update();
             slide(500);
             dump(0);
-            dump(0.45); //reset dumper
+            robot.dumpServo.setPosition(45); //reset dumper
             slide(-500);
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
             slide(2300);
             dump(0);
-            dump(0.45); //reset dumper
+            robot.dumpServo.setPosition(45); //reset dumper
             slide(-2300);
         }else{
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
             slide(1400);
-
             dump(0);
-            dump(0.45); //reset dumper
+            robot.dumpServo.setPosition(45); //reset dumper
             slide(-1400);
         }
 
         encoderDrive(DRIVE_SPEED, 2, 2, 2);
-        encoderDrive(TURN_SPEED, -3, 3, 32);
-        encoderDrive(DRIVE_SPEED, 32, 32, 10.0);  // go to wheel
-        duckSpin(COUNTERCLOCKWISE,6000);
-        encoderDrive(TURN_SPEED,   -16, 16, 6);
-        encoderDrive(DRIVE_SPEED,  23,  23, 5);
+        encoderDrive(TURN_SPEED, -1.25, 1.25, 1);
+        encoderDrive(DRIVE_SPEED, 39, 39, 5);  // go to wheel
+        duckSpin(COUNTERCLOCKWISE,5000);
+        encoderDrive(TURN_SPEED,   -24, 24, 3);
+        encoderDrive(DRIVE_SPEED,  23,  23, 3);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
 
         //JANKY STRAFE
 
-        /*
+
         robot.rfDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.lfDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.rbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.lbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        robot.rfDrive.setTargetPosition(-350);
-        robot.lfDrive.setTargetPosition(-350);
-        robot.rbDrive.setTargetPosition(350);
-        robot.lbDrive.setTargetPosition(350);
+        robot.rfDrive.setTargetPosition(-500);
+        robot.lfDrive.setTargetPosition(-500);
+        robot.rbDrive.setTargetPosition(500);
+        robot.lbDrive.setTargetPosition(500);
 
         robot.rfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.lfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.rbDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.lbDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        robot.rfDrive.setPower(0.3);
-        robot.lfDrive.setPower(0.3);
-        robot.rbDrive.setPower(0.3);
-        robot.lbDrive.setPower(0.3);
+        robot.rfDrive.setPower(0.4);
+        robot.lfDrive.setPower(0.4);
+        robot.rbDrive.setPower(0.4);
+        robot.lbDrive.setPower(0.4);
 
         while (opModeIsActive() && robot.rfDrive.isBusy() && robot.lfDrive.isBusy() && robot.rbDrive.isBusy() && robot.lbDrive.isBusy()) {
             sleep(0);
@@ -227,8 +226,8 @@ public class DetectorBlueStorage extends LinearOpMode {
         robot.lbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
-         */
-        sleep(1000);
+
+        sleep(500);
         telemetry.addData("Path", "Complete");
         telemetry.update();
 
