@@ -181,11 +181,11 @@ public class DetectorBlueStorage extends LinearOpMode {
         }
 
         encoderDrive(DRIVE_SPEED, 2, 2, 2);
-        encoderDrive(TURN_SPEED, -4, 4, 1);
-        encoderDrive(DRIVE_SPEED, 42.5, 42.5, 5);  // go to wheel
+        encoderDrive(TURN_SPEED, -3.5, 3.5, 1);
+        encoderDrive(DRIVE_SPEED, 42.25, 42.25, 5);  // go to wheel
         duckSpin(COUNTERCLOCKWISE,6000);
         encoderDrive(TURN_SPEED,   -27, 27, 3);
-        encoderDrive(DRIVE_SPEED,  20,  20, 3);
+        encoderDrive(DRIVE_SPEED,  17,  17, 3);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
 
@@ -197,10 +197,10 @@ public class DetectorBlueStorage extends LinearOpMode {
         robot.rbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.lbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        robot.rfDrive.setTargetPosition(-350);
-        robot.lfDrive.setTargetPosition(-350);
-        robot.rbDrive.setTargetPosition(350);
-        robot.lbDrive.setTargetPosition(350);
+        robot.rfDrive.setTargetPosition(-300);
+        robot.lfDrive.setTargetPosition(-300);
+        robot.rbDrive.setTargetPosition(300);
+        robot.lbDrive.setTargetPosition(300);
 
         robot.rfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.lfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
