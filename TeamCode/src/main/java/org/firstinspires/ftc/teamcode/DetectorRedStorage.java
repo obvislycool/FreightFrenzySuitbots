@@ -38,8 +38,8 @@ public class DetectorRedStorage extends LinearOpMode {
     static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * Math.PI);
 
-    static final double     DRIVE_SPEED             = 0.60;
-    static final double     TURN_SPEED              = 0.5;
+    static final double     DRIVE_SPEED             = 0.65;
+    static final double     TURN_SPEED              = 0.55;
 
     static final double DUCK_SPEED = 0.3;
 
@@ -117,7 +117,7 @@ public class DetectorRedStorage extends LinearOpMode {
         int samples = 0;
 
         runtime.reset();
-        while (opModeIsActive() && samples < 100 && runtime.seconds()<7.5){
+        while (opModeIsActive() && samples < 35 && runtime.seconds() < 3.5){
 
             telemetry.addData("Runtime", runtime.seconds());
             telemetry.addLine("In Loop");
@@ -149,10 +149,10 @@ public class DetectorRedStorage extends LinearOpMode {
         telemetry.update();
         webcam.stopStreaming();
 
-        encoderDrive(TURN_SPEED, 7, -7, 3); //turn to hub
-        encoderDrive(DRIVE_SPEED,  20,  20, 6.0);  //drive to hub
-        encoderDrive(TURN_SPEED,   -39, 39, 10.0);  //180 turn
-        encoderDrive(0.2, -7, -7, 3);  //back into hub
+        encoderDrive(TURN_SPEED, 7, -7, 2); //turn to hub
+        encoderDrive(DRIVE_SPEED,  20,  20, 4.0);  //drive to hub
+        encoderDrive(TURN_SPEED,   -39, 39, 6.0);  //180 turn
+        encoderDrive(0.35, -6.25, -6.25, 2);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -162,66 +162,30 @@ public class DetectorRedStorage extends LinearOpMode {
             telemetry.update();
             slide(500);
             dump(0);
-            dump(0.45); //reset dumper
+            robot.dumpServo.setPosition(45); //reset dumper
             slide(-500);
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
             slide(2300);
             dump(0);
-            dump(0.45); //reset dumper
+            robot.dumpServo.setPosition(45); //reset dumper
             slide(-2300);
         }else{
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
             slide(1400);
             dump(0);
-            dump(0.45); //reset dumper
+            robot.dumpServo.setPosition(45); //reset dumper
             slide(-1400);
         }
 
-        encoderDrive(DRIVE_SPEED, 2, 2, 10.0);  // drive away from hub
-        encoderDrive(TURN_SPEED, 7, -7, 10.0);  // turn to wheel
-
-        // JANKY STRAFE
-
-        robot.rfDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.lfDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.rbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.lbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-        robot.rfDrive.setTargetPosition(-400);
-        robot.lfDrive.setTargetPosition(-400);
-        robot.rbDrive.setTargetPosition(400);
-        robot.lbDrive.setTargetPosition(400);
-
-        robot.rfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.lfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.rbDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.lbDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-        robot.rfDrive.setPower(0.3);
-        robot.lfDrive.setPower(0.3);
-        robot.rbDrive.setPower(0.3);
-        robot.lbDrive.setPower(0.3);
-
-        while (opModeIsActive() && robot.rfDrive.isBusy() && robot.lfDrive.isBusy() && robot.rbDrive.isBusy() && robot.lbDrive.isBusy()) {
-            sleep(0);
-        }
-        robot.rfDrive.setPower(0);
-        robot.lfDrive.setPower(0);
-        robot.rbDrive.setPower(0);
-        robot.lbDrive.setPower(0);
-
-        robot.rfDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.lfDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.rbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.lbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        encoderDrive(0.4, 37, 37, 10.0);  // go to wheel
+        encoderDrive(DRIVE_SPEED, 3, 3, 2);  // drive away from hub
+        encoderDrive(TURN_SPEED, 6.5, -6.5, 2);  // turn to wheel
+        encoderDrive(DRIVE_SPEED, 45, 45, 7);  // go to wheel
         duckSpin(COUNTERCLOCKWISE,5000);
-        encoderDrive(TURN_SPEED,   +30, -30, 8.0);
-        encoderDrive(DRIVE_SPEED,  21,  21, 6.0);
+        encoderDrive(TURN_SPEED,   +30, -30, 5);
+        encoderDrive(DRIVE_SPEED,  21,  21, 4);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
 
@@ -232,20 +196,20 @@ public class DetectorRedStorage extends LinearOpMode {
         robot.rbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.lbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        robot.rfDrive.setTargetPosition(350);
-        robot.lfDrive.setTargetPosition(350);
-        robot.rbDrive.setTargetPosition(-350);
-        robot.lbDrive.setTargetPosition(-350);
+        robot.rfDrive.setTargetPosition(400);
+        robot.lfDrive.setTargetPosition(400);
+        robot.rbDrive.setTargetPosition(-400);
+        robot.lbDrive.setTargetPosition(-400);
 
         robot.rfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.lfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.rbDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.lbDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        robot.rfDrive.setPower(0.3);
-        robot.lfDrive.setPower(0.3);
-        robot.rbDrive.setPower(0.3);
-        robot.lbDrive.setPower(0.3);
+        robot.rfDrive.setPower(0.4);
+        robot.lfDrive.setPower(0.4);
+        robot.rbDrive.setPower(0.4);
+        robot.lbDrive.setPower(0.4);
 
         while (opModeIsActive() && robot.rfDrive.isBusy() && robot.lfDrive.isBusy() && robot.rbDrive.isBusy() && robot.lbDrive.isBusy()) {
             sleep(0);
