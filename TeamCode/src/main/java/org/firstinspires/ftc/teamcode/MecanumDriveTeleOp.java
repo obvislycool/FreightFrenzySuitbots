@@ -17,7 +17,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class MecanumDriveTeleOp extends OpMode {
 
     final static double DONT_DESTROY_MOTORS = 0.70;
-    final static double DUCK_SPEED = 0.45;
+    final static double DUCK_SPEED = 0.55;
     final static double HARVEST_SPEED = 0.6;
 
     private ElapsedTime runtime = new ElapsedTime();
@@ -52,7 +52,7 @@ public class MecanumDriveTeleOp extends OpMode {
         telemetry.addData("Status", "Initialized");
 
         robot.init(hardwareMap);
-
+   
         lfDrive  = hardwareMap.get(DcMotor.class, "lf");
         rfDrive = hardwareMap.get(DcMotor.class, "rf");
         lbDrive = hardwareMap.get(DcMotor.class, "lb");
