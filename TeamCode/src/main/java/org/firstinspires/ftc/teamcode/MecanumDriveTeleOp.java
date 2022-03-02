@@ -52,7 +52,7 @@ public class MecanumDriveTeleOp extends OpMode {
         telemetry.addData("Status", "Initialized");
 
         robot.init(hardwareMap);
-   
+
         lfDrive  = hardwareMap.get(DcMotor.class, "lf");
         rfDrive = hardwareMap.get(DcMotor.class, "rf");
         lbDrive = hardwareMap.get(DcMotor.class, "lb");

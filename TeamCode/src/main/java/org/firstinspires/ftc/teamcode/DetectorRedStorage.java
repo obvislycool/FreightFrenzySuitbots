@@ -182,7 +182,43 @@ public class DetectorRedStorage extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED, 2, 2, 10.0);  // drive away from hub
         encoderDrive(TURN_SPEED, 7, -7, 10.0);  // turn to wheel
-        encoderDrive(0.4, 32, 32, 10.0);  // go to wheel
+
+        // JANKY STRAFE
+
+        robot.rfDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.lfDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.rbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.lbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        robot.rfDrive.setTargetPosition(-400);
+        robot.lfDrive.setTargetPosition(-400);
+        robot.rbDrive.setTargetPosition(400);
+        robot.lbDrive.setTargetPosition(400);
+
+        robot.rfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.lfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.rbDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.lbDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        robot.rfDrive.setPower(0.3);
+        robot.lfDrive.setPower(0.3);
+        robot.rbDrive.setPower(0.3);
+        robot.lbDrive.setPower(0.3);
+
+        while (opModeIsActive() && robot.rfDrive.isBusy() && robot.lfDrive.isBusy() && robot.rbDrive.isBusy() && robot.lbDrive.isBusy()) {
+            sleep(0);
+        }
+        robot.rfDrive.setPower(0);
+        robot.lfDrive.setPower(0);
+        robot.rbDrive.setPower(0);
+        robot.lbDrive.setPower(0);
+
+        robot.rfDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.lfDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.rbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.lbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        encoderDrive(0.4, 37, 37, 10.0);  // go to wheel
         duckSpin(COUNTERCLOCKWISE,5000);
         encoderDrive(TURN_SPEED,   +30, -30, 8.0);
         encoderDrive(DRIVE_SPEED,  21,  21, 6.0);
