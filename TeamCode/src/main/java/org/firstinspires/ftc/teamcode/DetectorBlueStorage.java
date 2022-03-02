@@ -117,7 +117,7 @@ public class DetectorBlueStorage extends LinearOpMode {
         int samples = 0;
 
         runtime.reset();
-        while (opModeIsActive() && samples < 15 && runtime.seconds()<2.5){
+        while (opModeIsActive() && samples < 35 && runtime.seconds()<2.5){
 
             telemetry.addData("Runtime", runtime.seconds());
             telemetry.addLine("In Loop");
@@ -152,7 +152,7 @@ public class DetectorBlueStorage extends LinearOpMode {
         encoderDrive(TURN_SPEED, -8, 8, 2); //turn to hub
         encoderDrive(DRIVE_SPEED,  22,  22, 3);  //drive to hub
         encoderDrive(TURN_SPEED,   -44, +44, 4);  //180 turn
-        encoderDrive(0.4, -10, -10, 3);  //back into hub
+        encoderDrive(0.35, -9.75, -9.75, 3);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -181,10 +181,10 @@ public class DetectorBlueStorage extends LinearOpMode {
         }
 
         encoderDrive(DRIVE_SPEED, 2, 2, 2);
-        encoderDrive(TURN_SPEED, -1.25, 1.25, 1);
-        encoderDrive(DRIVE_SPEED, 39, 39, 5);  // go to wheel
-        duckSpin(COUNTERCLOCKWISE,5000);
-        encoderDrive(TURN_SPEED,   -24, 24, 3);
+        encoderDrive(TURN_SPEED, -4, 4, 1);
+        encoderDrive(DRIVE_SPEED, 42, 42, 5);  // go to wheel
+        duckSpin(COUNTERCLOCKWISE,6000);
+        encoderDrive(TURN_SPEED,   -27, 27, 3);
         encoderDrive(DRIVE_SPEED,  23,  23, 3);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -197,10 +197,10 @@ public class DetectorBlueStorage extends LinearOpMode {
         robot.rbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.lbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        robot.rfDrive.setTargetPosition(-500);
-        robot.lfDrive.setTargetPosition(-500);
-        robot.rbDrive.setTargetPosition(500);
-        robot.lbDrive.setTargetPosition(500);
+        robot.rfDrive.setTargetPosition(-400);
+        robot.lfDrive.setTargetPosition(-400);
+        robot.rbDrive.setTargetPosition(400);
+        robot.lbDrive.setTargetPosition(400);
 
         robot.rfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.lfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
