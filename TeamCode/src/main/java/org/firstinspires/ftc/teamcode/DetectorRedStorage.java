@@ -38,10 +38,10 @@ public class DetectorRedStorage extends LinearOpMode {
     static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * Math.PI);
 
-    static final double     DRIVE_SPEED             = 0.65;
-    static final double     TURN_SPEED              = 0.55;
+    static final double     DRIVE_SPEED             = 0.68;
+    static final double     TURN_SPEED              = 0.58;
 
-    static final double DUCK_SPEED = 0.3;
+    static final double DUCK_SPEED = 0.4;
 
     static final boolean CLOCKWISE = true;
     static final boolean COUNTERCLOCKWISE = false;
@@ -117,7 +117,7 @@ public class DetectorRedStorage extends LinearOpMode {
         int samples = 0;
 
         runtime.reset();
-        while (opModeIsActive() && samples < 35 && runtime.seconds() < 3.5){
+        while (opModeIsActive() && samples < 25 && runtime.seconds() < 2.5){
 
             telemetry.addData("Runtime", runtime.seconds());
             telemetry.addLine("In Loop");
@@ -152,7 +152,7 @@ public class DetectorRedStorage extends LinearOpMode {
         encoderDrive(TURN_SPEED, 7, -7, 2); //turn to hub
         encoderDrive(DRIVE_SPEED,  20,  20, 4.0);  //drive to hub
         encoderDrive(TURN_SPEED,   -39, 39, 6.0);  //180 turn
-        encoderDrive(0.35, -6.5, -6.5, 2);  //back into hub
+        encoderDrive(0.4, -6.25, -6.25, 2);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -184,10 +184,10 @@ public class DetectorRedStorage extends LinearOpMode {
         encoderDrive(TURN_SPEED, 6.5, -6.5, 2);  // turn to wheel
         encoderDrive(0.5, 44, 44, 7);  // go to wheel
         encoderDrive(TURN_SPEED, -2, 2, 2);  // turn to wheel
-        duckSpin(COUNTERCLOCKWISE,5000);
-        encoderDrive(DRIVE_SPEED, -1, -1, 1);
+        duckSpin(COUNTERCLOCKWISE,4000);
+        encoderDrive(DRIVE_SPEED, -2, -2, 1);
         encoderDrive(TURN_SPEED,   +30, -30, 5);
-        encoderDrive(DRIVE_SPEED,  18,  18, 4);
+        encoderDrive(DRIVE_SPEED,  20,  20, 4);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
 
@@ -233,14 +233,14 @@ public class DetectorRedStorage extends LinearOpMode {
     }
     public void dump(double position){
         robot.dumpServo.setPosition(position);
-        sleep(3000);
+        sleep(2500);
     }
 
     public void slide(int ticks){
         robot.slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.slideMotor.setTargetPosition(ticks);
         robot.slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.slideMotor.setPower(0.3);
+        robot.slideMotor.setPower(0.5);
         while (opModeIsActive()&& robot.slideMotor.isBusy()) {
             sleep(0);
         }
