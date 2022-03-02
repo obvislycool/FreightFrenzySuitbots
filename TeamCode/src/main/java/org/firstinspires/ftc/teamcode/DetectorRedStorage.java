@@ -151,8 +151,8 @@ public class DetectorRedStorage extends LinearOpMode {
 
         encoderDrive(TURN_SPEED, 7, -7, 3); //turn to hub
         encoderDrive(DRIVE_SPEED,  20,  20, 6.0);  //drive to hub
-        encoderDrive(TURN_SPEED,   -42, +42, 10.0);  //180 turn
-        encoderDrive(0.2, -8.25, -8.25, 3);  //back into hub
+        encoderDrive(TURN_SPEED,   -39, 39, 10.0);  //180 turn
+        encoderDrive(0.2, -7.5, -7.5, 3);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -180,10 +180,12 @@ public class DetectorRedStorage extends LinearOpMode {
             slide(-1400);
         }
 
-        encoderDrive(0.2, 29, 29, 10.0);  // go to wheel
-        duckSpin(COUNTERCLOCKWISE,6000);
-        encoderDrive(TURN_SPEED,   +32, -32, 8.0);
-        encoderDrive(DRIVE_SPEED,  23,  23, 6.0);
+        encoderDrive(DRIVE_SPEED, 2, 2, 10.0);  // drive away from hub
+        encoderDrive(TURN_SPEED, -4, 4, 10.0);  // turn to wheel
+        encoderDrive(0.4, 29, 29, 10.0);  // go to wheel
+        duckSpin(COUNTERCLOCKWISE,5000);
+        encoderDrive(TURN_SPEED,   +30, -30, 8.0);
+        encoderDrive(DRIVE_SPEED,  21,  21, 6.0);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
 

@@ -38,8 +38,8 @@ public class DetectorBlueStorage extends LinearOpMode {
     static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * Math.PI);
 
-    static final double     DRIVE_SPEED             = 0.60;
-    static final double     TURN_SPEED              = 0.5;
+    static final double     DRIVE_SPEED             = 0.65;
+    static final double     TURN_SPEED              = 0.55;
 
     static final double DUCK_SPEED = 0.3;
 
@@ -182,8 +182,8 @@ public class DetectorBlueStorage extends LinearOpMode {
 
         encoderDrive(DRIVE_SPEED, 2, 2, 2);
         encoderDrive(TURN_SPEED, -3.5, 3.5, 1);
-        encoderDrive(DRIVE_SPEED, 41, 41, 5);  // go to wheel
-        duckSpin(CLOCKWISE,6000);
+        encoderDrive(DRIVE_SPEED, 40, 40, 5);  // go to wheel
+        duckSpin(CLOCKWISE,5000);
         encoderDrive(TURN_SPEED,   -27, 27, 3);
         encoderDrive(DRIVE_SPEED,  19,  19, 3);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
@@ -242,7 +242,7 @@ public class DetectorBlueStorage extends LinearOpMode {
         robot.slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.slideMotor.setTargetPosition(ticks);
         robot.slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.slideMotor.setPower(0.3);
+        robot.slideMotor.setPower(0.5);
         while (opModeIsActive()&& robot.slideMotor.isBusy()) {
             sleep(0);
         }
