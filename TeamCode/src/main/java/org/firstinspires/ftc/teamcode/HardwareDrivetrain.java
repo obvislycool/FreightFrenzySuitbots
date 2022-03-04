@@ -89,7 +89,7 @@ public class HardwareDrivetrain {
             slideMotor = hwMap.get(DcMotor.class, "slidemotor");
             harvestMotor = hwMap.get(DcMotor.class, "harvestmotor");
 
-            limitSensor = hwMap.touchSensor.get("limitSensor");
+            limitSensor = hwMap.touchSensor.get("limitsensor");
 
             dumpServo = hwMap.get(Servo.class, "dumpservo");
 

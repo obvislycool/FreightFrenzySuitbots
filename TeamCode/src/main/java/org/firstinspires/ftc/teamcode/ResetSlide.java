@@ -41,11 +41,22 @@ public class ResetSlide extends LinearOpMode {
 
         waitForStart();
 
+        robot.slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.slideMotor.setTargetPosition(200);
+        robot.slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.slideMotor.setPower(-0.3);
+        while (opModeIsActive()&& robot.slideMotor.isBusy()) {
+            sleep(0);
+        }
+        robot.slideMotor.setPower(0);
+
+
         runtime.reset();
-        robot.slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.slideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        robot.slideMotor.setPower(0.1);
-        while(!robot.limitSensor.isPressed() && opModeIsActive() && runtime.seconds()<3){
+        robot.slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.slideMotor.setTargetPosition(-3000);
+        robot.slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.slideMotor.setPower(0.2);
+        while(!robot.limitSensor.isPressed() && opModeIsActive() && runtime.seconds()<3.5){
             sleep(0);
         }
         robot.slideMotor.setPower(0);
