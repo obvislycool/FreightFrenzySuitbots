@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 //import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class HardwareDrivetrain {
@@ -61,7 +62,7 @@ public class HardwareDrivetrain {
         public DcMotor slideMotor = null;
         public DcMotor harvestMotor = null;
 
-        //public AnalogInput limitSensor = null;
+        TouchSensor limitSensor = null;
 
         public Servo dumpServo = null;
 
@@ -88,7 +89,7 @@ public class HardwareDrivetrain {
             slideMotor = hwMap.get(DcMotor.class, "slidemotor");
             harvestMotor = hwMap.get(DcMotor.class, "harvestmotor");
 
-            //limitSensor = hwMap.get(AnalogInput.class, "limitsensor");
+            limitSensor = hwMap.touchSensor.get("limitSensor");
 
             dumpServo = hwMap.get(Servo.class, "dumpservo");
 

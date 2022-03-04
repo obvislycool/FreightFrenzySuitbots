@@ -141,10 +141,16 @@ public class MecanumDriveTeleOp extends OpMode {
 
         harvestPower = gamepad2.right_stick_y * -1;
 
-        slidePower = gamepad2.left_stick_y * -.4;
-        //if(slidePower<0 && limitSensor.getVoltage()!=0){
-        //    slidePower=0;
-        //}
+        slidePower = gamepad2.left_stick_y * -.6;
+        if(slidePower<0.1){
+            slidePower *= 0.5;
+            if(robot.limitSensor.isPressed()){
+                slidePower=0;
+                telemetry.addData("Status", "Slide Reached Limit");    //
+                telemetry.update();
+            }
+        }
+
 
 
         if(gamepad2.a){
