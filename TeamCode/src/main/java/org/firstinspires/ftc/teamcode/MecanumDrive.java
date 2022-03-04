@@ -141,9 +141,10 @@ public class MecanumDrive extends OpMode {
         }
 
         if(Math.abs(gamepad2.right_stick_x) > 0.1){
-            duckPower = gamepad1.right_stick_x;
+            duckPower = gamepad2.right_stick_x;
         }
 
+        //harvest stuff
         harvestPower = gamepad2.right_stick_y * -1;
 
         //Slide stuff
@@ -180,11 +181,11 @@ public class MecanumDrive extends OpMode {
         rbPower /= maxPower;
 
         //Turbo stuff
-        if((gamepad1.a || gamepad2.a) && !pressingA){
+        if((gamepad1.a || gamepad2.x) && !pressingA){
             turboModeOn = !turboModeOn;
             pressingA = true;
         }
-        if(!gamepad1.a && !gamepad2.a){
+        if(!gamepad1.a && !gamepad2.x){
             pressingA = false;
         }
 
