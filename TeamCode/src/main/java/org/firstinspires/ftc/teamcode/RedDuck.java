@@ -22,7 +22,7 @@ import org.openftc.easyopencv.OpenCvPipeline;
 import org.openftc.easyopencv.OpenCvWebcam;
 
 //@Disabled //Comment out to run
-@Autonomous(name = "RedDuck", group = "Auto")
+@Autonomous(name = "Red-Duck", group = "Auto")
 public class RedDuck extends LinearOpMode {
 
     OpenCvWebcam webcam;

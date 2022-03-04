@@ -23,7 +23,7 @@ import org.openftc.easyopencv.OpenCvPipeline;
 import org.openftc.easyopencv.OpenCvWebcam;
 
 //@Disabled //Comment out to run
-@Autonomous(name = "SlideReset", group = "Auto")
+@Autonomous(name = "Slide-Reset", group = "Auto")
 public class SlideReset extends LinearOpMode {
 
 

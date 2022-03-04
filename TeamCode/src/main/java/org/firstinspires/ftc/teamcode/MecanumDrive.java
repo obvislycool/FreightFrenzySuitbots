@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@TeleOp(name="Mecanum Drive", group="Iterative Opmode")
+@TeleOp(name="Mecanum-Drive", group="Iterative Opmode")
 //@Disabled
 public class MecanumDrive extends OpMode {
 

@@ -22,7 +22,7 @@ import org.openftc.easyopencv.OpenCvPipeline;
 import org.openftc.easyopencv.OpenCvWebcam;
 
 //@Disabled //Comment out to run
-@Autonomous(name = "BlueBarrier", group = "Auto")
+@Autonomous(name = "Blue-Barrier", group = "Auto")
 public class BlueBarrier extends LinearOpMode {
 
     OpenCvWebcam webcam;
