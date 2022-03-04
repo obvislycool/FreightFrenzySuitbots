@@ -16,9 +16,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 //@Disabled
 public class MecanumDrive extends OpMode {
 
-    final static double DONT_DESTROY_MOTORS = 0.70;
+    final static double DONT_DESTROY_MOTORS = 0.80;
     final static double DUCK_SPEED = 0.55;
-    final static double HARVEST_SPEED = 0.6;
+    //final static double HARVEST_SPEED = 0.6;
 
     private ElapsedTime runtime = new ElapsedTime();
     HardwareDrivetrain robot   = new HardwareDrivetrain();
@@ -141,7 +141,7 @@ public class MecanumDrive extends OpMode {
 
         harvestPower = gamepad2.right_stick_y * -1;
 
-        slidePower = gamepad2.left_stick_y * -.6;
+        slidePower = gamepad2.left_stick_y * -.8;
         if(slidePower<0.1){
             slidePower *= 0.5;
             if(robot.limitSensor.isPressed()){
