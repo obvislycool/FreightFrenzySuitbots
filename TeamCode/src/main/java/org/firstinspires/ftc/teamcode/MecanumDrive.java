@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp(name="Mecanum Drive", group="Iterative Opmode")
 //@Disabled
-public class MecanumDriveTeleOp extends OpMode {
+public class MecanumDrive extends OpMode {
 
     final static double DONT_DESTROY_MOTORS = 0.70;
     final static double DUCK_SPEED = 0.55;

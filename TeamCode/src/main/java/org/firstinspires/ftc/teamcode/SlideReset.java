@@ -23,8 +23,8 @@ import org.openftc.easyopencv.OpenCvPipeline;
 import org.openftc.easyopencv.OpenCvWebcam;
 
 //@Disabled //Comment out to run
-@Autonomous(name = "ResetSlide", group = "Auto")
-public class ResetSlide extends LinearOpMode {
+@Autonomous(name = "SlideReset", group = "Auto")
+public class SlideReset extends LinearOpMode {
 
 
     HardwareDrivetrain robot   = new HardwareDrivetrain();

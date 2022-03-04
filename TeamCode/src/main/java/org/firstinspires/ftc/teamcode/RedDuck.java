@@ -22,8 +22,8 @@ import org.openftc.easyopencv.OpenCvPipeline;
 import org.openftc.easyopencv.OpenCvWebcam;
 
 //@Disabled //Comment out to run
-@Autonomous(name = "DetectorBlueStorage", group = "Auto")
-public class DetectorBlueStorage extends LinearOpMode {
+@Autonomous(name = "RedDuck", group = "Auto")
+public class RedDuck extends LinearOpMode {
 
     OpenCvWebcam webcam;
     private ElapsedTime runtime = new ElapsedTime();
@@ -38,10 +38,10 @@ public class DetectorBlueStorage extends LinearOpMode {
     static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * Math.PI);
 
-    static final double     DRIVE_SPEED             = 0.65;
-    static final double     TURN_SPEED              = 0.55;
+    static final double     DRIVE_SPEED             = 0.68;
+    static final double     TURN_SPEED              = 0.58;
 
-    static final double DUCK_SPEED = 0.3;
+    static final double DUCK_SPEED = 0.4;
 
     static final boolean CLOCKWISE = true;
     static final boolean COUNTERCLOCKWISE = false;
@@ -117,7 +117,7 @@ public class DetectorBlueStorage extends LinearOpMode {
         int samples = 0;
 
         runtime.reset();
-        while (opModeIsActive() && samples < 35 && runtime.seconds()<2.5){
+        while (opModeIsActive() && samples < 35 && runtime.seconds() < 3.5){
 
             telemetry.addData("Runtime", runtime.seconds());
             telemetry.addLine("In Loop");
@@ -149,10 +149,10 @@ public class DetectorBlueStorage extends LinearOpMode {
         telemetry.update();
         webcam.stopStreaming();
 
-        encoderDrive(TURN_SPEED, -8, 8, 2); //turn to hub
-        encoderDrive(DRIVE_SPEED,  22,  22, 3);  //drive to hub
-        encoderDrive(TURN_SPEED,   -44, +44, 4);  //180 turn
-        encoderDrive(0.35, -10.25, -10.25, 3);  //back into hub
+        encoderDrive(TURN_SPEED, 7, -7, 2); //turn to hub
+        encoderDrive(DRIVE_SPEED,  20,  20, 4.0);  //drive to hub
+        encoderDrive(TURN_SPEED,   -39, 39, 6.0);  //180 turn
+        encoderDrive(0.4, -6, -6, 2);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -180,27 +180,27 @@ public class DetectorBlueStorage extends LinearOpMode {
             slide(-1400);
         }
 
-        encoderDrive(DRIVE_SPEED, 2, 2, 2);
-        encoderDrive(TURN_SPEED, -3.5, 3.5, 1);
-        encoderDrive(DRIVE_SPEED, 40, 40, 5);  // go to wheel
-        duckSpin(CLOCKWISE,5000);
-        encoderDrive(TURN_SPEED,   -27, 27, 3);
-        encoderDrive(DRIVE_SPEED,  19,  19, 3);
+        encoderDrive(DRIVE_SPEED, 3.5, 3.5, 2);  // drive away from hub
+        encoderDrive(TURN_SPEED, 6.5, -6.5, 2);  // turn to wheel
+        encoderDrive(0.5, 43.5, 43.5, 7);  // go to wheel
+        encoderDrive(TURN_SPEED, -2, 2, 2);  // turn to wheel
+        duckSpin(COUNTERCLOCKWISE,4000);
+        encoderDrive(DRIVE_SPEED, -2, -2, 1);
+        encoderDrive(TURN_SPEED,   +30, -30, 5);
+        encoderDrive(DRIVE_SPEED,  20,  20, 4);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
 
         //JANKY STRAFE
-
-
         robot.rfDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.lfDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.rbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.lbDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        robot.rfDrive.setTargetPosition(-300);
-        robot.lfDrive.setTargetPosition(-300);
-        robot.rbDrive.setTargetPosition(300);
-        robot.lbDrive.setTargetPosition(300);
+        robot.rfDrive.setTargetPosition(400);
+        robot.lfDrive.setTargetPosition(400);
+        robot.rbDrive.setTargetPosition(-400);
+        robot.lbDrive.setTargetPosition(-400);
 
         robot.rfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.lfDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -225,9 +225,7 @@ public class DetectorBlueStorage extends LinearOpMode {
         robot.rbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.lbDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-
-
-        sleep(500);
+        sleep(1000);
         telemetry.addData("Path", "Complete");
         telemetry.update();
 
@@ -235,7 +233,7 @@ public class DetectorBlueStorage extends LinearOpMode {
     }
     public void dump(double position){
         robot.dumpServo.setPosition(position);
-        sleep(3000);
+        sleep(2500);
     }
 
     public void slide(int ticks){

@@ -22,8 +22,8 @@ import org.openftc.easyopencv.OpenCvPipeline;
 import org.openftc.easyopencv.OpenCvWebcam;
 
 //@Disabled //Comment out to run
-@Autonomous(name = "DetectorRedDepot", group = "Auto")
-public class DetectorRedDepot extends LinearOpMode {
+@Autonomous(name = "BlueBarrier", group = "Auto")
+public class BlueBarrier extends LinearOpMode {
 
     OpenCvWebcam webcam;
     private ElapsedTime runtime = new ElapsedTime();
@@ -138,7 +138,7 @@ public class DetectorRedDepot extends LinearOpMode {
                     telemetry.update();
                     break;
                 default:
-                    rCount++;
+                    lCount++;
                     telemetry.addLine("None");
                     telemetry.update();
                     break;
@@ -149,10 +149,10 @@ public class DetectorRedDepot extends LinearOpMode {
         telemetry.update();
         webcam.stopStreaming();
 
-        encoderDrive(TURN_SPEED, -10, 10, 3); //turn to hub
-        encoderDrive(DRIVE_SPEED,  20,  20, 6.0);  //drive to hub
-        encoderDrive(TURN_SPEED,   -41, +41, 10.0);  //180 turn
-        encoderDrive(0.2, -8.5, -8.5, 3);  //back into hub
+        encoderDrive(TURN_SPEED, 5, -5, 3); //turn to hub
+        encoderDrive(DRIVE_SPEED,  21,  21, 6.0);  //drive to hub
+        encoderDrive(TURN_SPEED,   -37.5, +37.5, 10.0);  //180 turn
+        encoderDrive(0.2, -6.25, -6.25, 3);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -180,8 +180,8 @@ public class DetectorRedDepot extends LinearOpMode {
             slide(-1400);
         }
 
-    encoderDrive(DRIVE_SPEED,  15,  15, 6.0); //drive away from hub
-        encoderDrive(TURN_SPEED,  26,  -26, 6.0); //turn to face away from depot
+        encoderDrive(DRIVE_SPEED,  15,  15, 6.0); //drive away from hub
+        encoderDrive(TURN_SPEED,  -26,  26, 6.0); //turn to face away from depot
         encoderDrive(1,  -65,  -65, 7.0); //back into depot full speed
 
         sleep(1000);
@@ -283,3 +283,4 @@ public class DetectorRedDepot extends LinearOpMode {
         }
     }
 }
+
