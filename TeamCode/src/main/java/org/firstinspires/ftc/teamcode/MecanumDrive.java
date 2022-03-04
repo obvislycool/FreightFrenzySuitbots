@@ -17,7 +17,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class MecanumDrive extends OpMode {
 
     final static double DONT_DESTROY_MOTORS = 0.80;
-    final static double DUCK_SPEED = 0.55;
+    final static double DUCK_SPEED = 0.65;
     //final static double HARVEST_SPEED = 0.6;
 
     private ElapsedTime runtime = new ElapsedTime();
@@ -131,16 +131,22 @@ public class MecanumDrive extends OpMode {
 
         //telemetry.addData("X1",x1);  bugfixing
 
-        if(gamepad1.dpad_left){
+        //Duck stuff
+        if(gamepad1.dpad_left || gamepad2.dpad_left){
             duckPower = -DUCK_SPEED;
-        }else if(gamepad1.dpad_right){
+        }else if(gamepad1.dpad_right || gamepad2.dpad_right){
             duckPower = DUCK_SPEED;
         }else{
             duckPower = 0;
         }
 
+        if(Math.abs(gamepad2.right_stick_x) > 0.1){
+            duckPower = gamepad1.right_stick_x;
+        }
+
         harvestPower = gamepad2.right_stick_y * -1;
 
+        //Slide stuff
         slidePower = gamepad2.left_stick_y * -.8;
         if(slidePower<0.1){
             slidePower *= 0.5;
@@ -150,7 +156,6 @@ public class MecanumDrive extends OpMode {
                 telemetry.update();
             }
         }
-
 
 
         if(gamepad2.a){
@@ -174,11 +179,12 @@ public class MecanumDrive extends OpMode {
         lbPower /= maxPower;
         rbPower /= maxPower;
 
-        if(gamepad1.a && !pressingA){
+        //Turbo stuff
+        if((gamepad1.a || gamepad2.a) && !pressingA){
             turboModeOn = !turboModeOn;
             pressingA = true;
         }
-        if(!gamepad1.a){
+        if(!gamepad1.a && !gamepad2.a){
             pressingA = false;
         }
 
