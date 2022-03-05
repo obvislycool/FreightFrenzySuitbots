@@ -6,7 +6,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.AnalogInput;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -16,7 +15,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 //@Disabled
 public class MecanumDrive extends OpMode {
 
-    final static double DONT_DESTROY_MOTORS = 0.80;
+    final static double SLOW_MODE = 0.50;
     final static double DUCK_SPEED = 0.65;
     //final static double HARVEST_SPEED = 0.6;
 
@@ -233,10 +232,10 @@ public class MecanumDrive extends OpMode {
         }
         */
 
-        lfDrive.setPower((turboModeOn) ? lfPower : lfPower*DONT_DESTROY_MOTORS);
-        rfDrive.setPower((turboModeOn) ? rfPower : rfPower*DONT_DESTROY_MOTORS);
-        lbDrive.setPower((turboModeOn) ? lbPower : lbPower*DONT_DESTROY_MOTORS);
-        rbDrive.setPower((turboModeOn) ? rbPower : rbPower*DONT_DESTROY_MOTORS);
+        lfDrive.setPower((turboModeOn) ? lfPower : lfPower* SLOW_MODE);
+        rfDrive.setPower((turboModeOn) ? rfPower : rfPower* SLOW_MODE);
+        lbDrive.setPower((turboModeOn) ? lbPower : lbPower* SLOW_MODE);
+        rbDrive.setPower((turboModeOn) ? rbPower : rbPower* SLOW_MODE);
         duckDrive.setPower(duckPower);
         slideMotor.setPower(slidePower);
         harvestMotor.setPower(harvestPower);
