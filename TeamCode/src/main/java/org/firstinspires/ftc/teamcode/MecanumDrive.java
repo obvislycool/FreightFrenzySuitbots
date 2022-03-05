@@ -33,8 +33,8 @@ public class MecanumDrive extends OpMode {
     private Servo dumpServo = null;
     //private AnalogInput limitSensor = null;
 
-    private boolean turboModeOn = false;
-    private boolean pressingA = false;
+    private boolean turboModeOn = true;
+    //private boolean pressingA = false;
     //private boolean pressingA2 = false;
     //private boolean dumperDown = false;
 
@@ -182,6 +182,13 @@ public class MecanumDrive extends OpMode {
         rbPower /= maxPower;
 
         //Turbo stuff
+        if(gamepad1.a || gamepad2.x){
+            turboModeOn = false;
+        }else{
+            turboModeOn = true;
+        }
+
+        /*
         if((gamepad1.a || gamepad2.x) && !pressingA){
             turboModeOn = !turboModeOn;
             pressingA = true;
@@ -189,6 +196,8 @@ public class MecanumDrive extends OpMode {
         if(!gamepad1.a && !gamepad2.x){
             pressingA = false;
         }
+        */
+
 
         /*
         if(!(gamepad1.left_bumper || gamepad1.right_bumper)){
