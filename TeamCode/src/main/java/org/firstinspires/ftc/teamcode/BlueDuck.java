@@ -152,7 +152,7 @@ public class BlueDuck extends LinearOpMode {
         encoderDrive(TURN_SPEED, -8, 8, 2); //turn to hub
         encoderDrive(DRIVE_SPEED,  22,  22, 3);  //drive to hub
         encoderDrive(TURN_SPEED,   -44, +44, 4);  //180 turn
-        encoderDrive(0.35, -10.25, -10.25, 3);  //back into hub
+        encoderDrive(0.35, -10, -10, 3);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);

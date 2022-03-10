@@ -152,7 +152,7 @@ public class BlueBarrier extends LinearOpMode {
         encoderDrive(TURN_SPEED, 5, -5, 3); //turn to hub
         encoderDrive(DRIVE_SPEED,  21,  21, 6.0);  //drive to hub
         encoderDrive(TURN_SPEED,   -37.5, +37.5, 10.0);  //180 turn
-        encoderDrive(0.2, -6.25, -6.25, 3);  //back into hub
+        encoderDrive(0.2, -6.75, -6.75, 3);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);

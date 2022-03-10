@@ -152,7 +152,7 @@ public class RedDuck extends LinearOpMode {
         encoderDrive(TURN_SPEED, 7, -7, 2); //turn to hub
         encoderDrive(DRIVE_SPEED,  20,  20, 4.0);  //drive to hub
         encoderDrive(TURN_SPEED,   -39, 39, 6.0);  //180 turn
-        encoderDrive(0.4, -6, -6, 2);  //back into hub
+        encoderDrive(0.4, -5.75, -5.75, 2);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);

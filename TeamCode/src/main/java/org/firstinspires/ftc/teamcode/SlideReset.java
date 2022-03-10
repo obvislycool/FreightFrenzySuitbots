@@ -55,10 +55,10 @@ public class SlideReset extends LinearOpMode {
 
         runtime.reset();
         robot.slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.slideMotor.setTargetPosition(-3000);
+        robot.slideMotor.setTargetPosition(-5000);
         robot.slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.slideMotor.setPower(0.2);
-        while(!robot.limitSensor.isPressed() && opModeIsActive() && runtime.seconds()<3.5){
+        while(!robot.limitSensor.isPressed() && opModeIsActive() && runtime.seconds()<4){
             sleep(0);
         }
         robot.slideMotor.setPower(0);

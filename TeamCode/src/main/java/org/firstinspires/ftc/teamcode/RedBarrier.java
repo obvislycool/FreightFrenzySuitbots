@@ -152,7 +152,7 @@ public class RedBarrier extends LinearOpMode {
         encoderDrive(TURN_SPEED, -10, 10, 3); //turn to hub
         encoderDrive(DRIVE_SPEED,  20,  20, 6.0);  //drive to hub
         encoderDrive(TURN_SPEED,   -41, +41, 10.0);  //180 turn
-        encoderDrive(0.2, -8.5, -8.5, 3);  //back into hub
+        encoderDrive(0.2, -8.75, -8.75, 3);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
