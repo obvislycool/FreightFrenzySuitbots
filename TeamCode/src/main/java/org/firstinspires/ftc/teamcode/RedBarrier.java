@@ -133,7 +133,7 @@ public class RedBarrier extends LinearOpMode {
         int samples = 0;
 
         runtime.reset();
-        while (opModeIsActive() && samples < 50 && runtime.seconds()<7.5){
+        while (opModeIsActive() && samples < 35 && runtime.seconds()<3.5){
 
             telemetry.addData("Runtime", runtime.seconds());
             telemetry.addLine("In Loop");
@@ -165,6 +165,7 @@ public class RedBarrier extends LinearOpMode {
         telemetry.update();
         webcam.stopStreaming();
 
+        sleep(wait * 1000);
         encoderDrive(TURN_SPEED, -10, 10, 3); //turn to hub
         encoderDrive(DRIVE_SPEED,  20,  20, 6.0);  //drive to hub
         encoderDrive(TURN_SPEED,   -41, +41, 10.0);  //180 turn
@@ -183,10 +184,10 @@ public class RedBarrier extends LinearOpMode {
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
-            slide(2300);
+            slide(2000);
             dump(0);
             dump(0.45); //reset dumper
-            slide(-2300);
+            slide(-2000);
         }else{
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
