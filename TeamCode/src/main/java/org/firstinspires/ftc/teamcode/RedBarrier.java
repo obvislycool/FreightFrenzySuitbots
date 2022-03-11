@@ -108,6 +108,22 @@ public class RedBarrier extends LinearOpMode {
         });
 
 
+        int wait = 0;
+        while (!isStarted() && !isStopRequested()){
+            telemetry.addData("Seconds of Delay:", wait);
+            telemetry.update();
+            if (gamepad2.dpad_up||gamepad1.dpad_up){
+                wait++;
+                if(wait > 20){
+                    wait = 20;
+                }
+                sleep(200);
+            }
+            else if (gamepad2.dpad_down||gamepad1.dpad_down){
+                wait--;
+                sleep(200);
+            }
+        }
 
 
         waitForStart();
@@ -117,7 +133,7 @@ public class RedBarrier extends LinearOpMode {
         int samples = 0;
 
         runtime.reset();
-        while (opModeIsActive() && samples < 100 && runtime.seconds()<7.5){
+        while (opModeIsActive() && samples < 50 && runtime.seconds()<7.5){
 
             telemetry.addData("Runtime", runtime.seconds());
             telemetry.addLine("In Loop");

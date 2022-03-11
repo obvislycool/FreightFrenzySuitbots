@@ -109,7 +109,6 @@ public class BlueDuck extends LinearOpMode {
 
 
 
-
         waitForStart();
 
         //while(!opModeIsActive)
