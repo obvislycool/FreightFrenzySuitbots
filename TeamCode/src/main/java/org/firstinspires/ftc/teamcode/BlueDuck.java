@@ -166,17 +166,17 @@ public class BlueDuck extends LinearOpMode {
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
-            slide(2000);
+            slide(2150);
             dump(0);
             robot.dumpServo.setPosition(45); //reset dumper
-            slide(-2000);
+            slide(-2150);
         }else{
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
-            slide(1400);
+            slide(1300);
             dump(0);
             robot.dumpServo.setPosition(45); //reset dumper
-            slide(-1400);
+            slide(-1300);
         }
 
         encoderDrive(DRIVE_SPEED, 2, 2, 2);

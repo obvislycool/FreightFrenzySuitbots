@@ -167,26 +167,26 @@ public class RedDuck extends LinearOpMode {
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
-            slide(2000);
+            slide(2150);
             dump(0);
             robot.dumpServo.setPosition(45); //reset dumper
-            slide(-2000);
+            slide(-2150);
         }else{
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
-            slide(1400);
+            slide(1300);
             dump(0);
             robot.dumpServo.setPosition(45); //reset dumper
-            slide(-1400);
+            slide(-1300);
         }
 
         encoderDrive(DRIVE_SPEED, 3.5, 3.5, 2);  // drive away from hub
-        encoderDrive(TURN_SPEED, 6.5, -6.5, 2);  // turn to wheel
+        encoderDrive(TURN_SPEED, 6.5, -6.5,  2);  // turn to wheel
         encoderDrive(0.5, 43.5, 43.5, 7);  // go to wheel
         encoderDrive(TURN_SPEED, -2, 2, 2);  // turn to wheel
         duckSpin(COUNTERCLOCKWISE,4000);
         encoderDrive(DRIVE_SPEED, -2, -2, 1);
-        encoderDrive(TURN_SPEED,   +30, -30, 5);
+        encoderDrive(TURN_SPEED,   +31, -31, 5);
         encoderDrive(DRIVE_SPEED,  20,  20, 4);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);

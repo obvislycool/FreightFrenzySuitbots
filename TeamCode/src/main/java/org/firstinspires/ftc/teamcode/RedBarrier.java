@@ -184,17 +184,17 @@ public class RedBarrier extends LinearOpMode {
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
-            slide(2000);
+            slide(2150);
             dump(0);
             dump(0.45); //reset dumper
-            slide(-2000);
+            slide(-2150);
         }else{
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
-            slide(1400);
+            slide(1300);
             dump(0);
             dump(0.45); //reset dumper
-            slide(-1400);
+            slide(-1300);
         }
 
     encoderDrive(DRIVE_SPEED,  15,  15, 6.0); //drive away from hub
