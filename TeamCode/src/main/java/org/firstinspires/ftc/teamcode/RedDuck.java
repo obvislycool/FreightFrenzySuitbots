@@ -163,21 +163,21 @@ public class RedDuck extends LinearOpMode {
             telemetry.update();
             slide(600);
             dump(0);
-            robot.dumpServo.setPosition(0.35); //reset dumper
+            dump(0.35);; //reset dumper
             slide(-600);
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
             slide(2150);
             dump(0);
-            robot.dumpServo.setPosition(0.35); //reset dumper
+            dump(0.35);; //reset dumper
             slide(-2150);
         }else{
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
             slide(1400);
             dump(0);
-            robot.dumpServo.setPosition(0.35); //reset dumper
+            dump(0.35);; //reset dumper
             slide(-1400);
         }
 
@@ -234,7 +234,7 @@ public class RedDuck extends LinearOpMode {
     }
     public void dump(double position){
         robot.dumpServo.setPosition(position);
-        sleep(2500);
+        sleep(2000);
     }
 
     public void slide(int ticks){
