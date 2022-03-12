@@ -170,7 +170,7 @@ public class RedBarrier extends LinearOpMode {
         encoderDrive(TURN_SPEED, -10, 10, 3); //turn to hub
         encoderDrive(DRIVE_SPEED,  20,  20, 6.0);  //drive to hub
         encoderDrive(TURN_SPEED,   -41, +41, 10.0);  //180 turn
-        encoderDrive(0.2, -8.75, -8.75, 3);  //back into hub
+        encoderDrive(0.2, -8, -8, 3);  //back into hub
         //duckSpin(COUNTERCLOCKWISE,6000);
         //encoderDrive(DRIVE_SPEED,  -19,  19, 6.0);
         //encoderDrive(DRIVE_SPEED,  9,  9, 6.0);
@@ -178,10 +178,10 @@ public class RedBarrier extends LinearOpMode {
         if(lCount >= mCount && lCount >= rCount){ //Set slide to correct position and dump
             telemetry.addLine("RUNNING LEFT AUTO");
             telemetry.update();
-            slide(500);
+            slide(600);
             dump(0);
             dump(0.35); //reset dumper
-            slide(-500);
+            slide(-600);
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
@@ -192,10 +192,10 @@ public class RedBarrier extends LinearOpMode {
         }else{
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
-            slide(1300);
+            slide(1400);
             dump(0);
             dump(0.35); //reset dumper
-            slide(-1300);
+            slide(-1400);
         }
 
     encoderDrive(DRIVE_SPEED,  15,  15, 6.0); //drive away from hub

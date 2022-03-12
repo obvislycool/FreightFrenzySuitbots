@@ -178,10 +178,10 @@ public class BlueBarrier extends LinearOpMode {
         if(lCount >= mCount && lCount >= rCount){ //Set slide to correct position and dump
             telemetry.addLine("RUNNING LEFT AUTO");
             telemetry.update();
-            slide(500);
+            slide(600);
             dump(0);
             dump(0.35); //reset dumper
-            slide(-500);
+            slide(-600);
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
@@ -192,10 +192,10 @@ public class BlueBarrier extends LinearOpMode {
         }else{
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
-            slide(1300);
+            slide(1400);
             dump(0);
             dump(0.35); //reset dumper
-            slide(-1300);
+            slide(-1400);
         }
 
         encoderDrive(DRIVE_SPEED,  15,  15, 6.0); //drive away from hub
