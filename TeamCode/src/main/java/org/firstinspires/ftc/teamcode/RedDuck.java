@@ -149,6 +149,7 @@ public class RedDuck extends LinearOpMode {
         telemetry.update();
         webcam.stopStreaming();
 
+        robot.dumpServo.setPosition(0.35);
         encoderDrive(TURN_SPEED, 7, -7, 2); //turn to hub
         encoderDrive(DRIVE_SPEED,  20,  20, 4.0);  //drive to hub
         encoderDrive(TURN_SPEED,   -39, 39, 6.0);  //180 turn
@@ -162,21 +163,21 @@ public class RedDuck extends LinearOpMode {
             telemetry.update();
             slide(500);
             dump(0);
-            robot.dumpServo.setPosition(45); //reset dumper
+            robot.dumpServo.setPosition(0.35); //reset dumper
             slide(-500);
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
             slide(2150);
             dump(0);
-            robot.dumpServo.setPosition(45); //reset dumper
+            robot.dumpServo.setPosition(0.35); //reset dumper
             slide(-2150);
         }else{
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
             slide(1300);
             dump(0);
-            robot.dumpServo.setPosition(45); //reset dumper
+            robot.dumpServo.setPosition(0.35); //reset dumper
             slide(-1300);
         }
 

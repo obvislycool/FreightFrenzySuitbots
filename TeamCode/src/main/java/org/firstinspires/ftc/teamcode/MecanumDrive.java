@@ -159,11 +159,11 @@ public class MecanumDrive extends OpMode {
 
 
         //dump stuff
-        if(gamepad2.a){
+        if(gamepad2.a) {
             dumpPosition = 0;
         }
         else{
-            dumpPosition = .45;
+            dumpPosition = 0.35;
         }
 
 

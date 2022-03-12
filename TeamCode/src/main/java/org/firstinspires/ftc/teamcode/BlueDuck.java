@@ -148,6 +148,7 @@ public class BlueDuck extends LinearOpMode {
         telemetry.update();
         webcam.stopStreaming();
 
+        robot.dumpServo.setPosition(0.35);
         encoderDrive(TURN_SPEED, -8, 8, 2); //turn to hub
         encoderDrive(DRIVE_SPEED,  22,  22, 3);  //drive to hub
         encoderDrive(TURN_SPEED,   -44, +44, 4);  //180 turn
@@ -161,21 +162,21 @@ public class BlueDuck extends LinearOpMode {
             telemetry.update();
             slide(500);
             dump(0);
-            robot.dumpServo.setPosition(45); //reset dumper
+            robot.dumpServo.setPosition(0.35); //reset dumper
             slide(-500);
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
             slide(2150);
             dump(0);
-            robot.dumpServo.setPosition(45); //reset dumper
+            robot.dumpServo.setPosition(0.35); //reset dumper
             slide(-2150);
         }else{
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
             slide(1300);
             dump(0);
-            robot.dumpServo.setPosition(45); //reset dumper
+            robot.dumpServo.setPosition(0.35); //reset dumper
             slide(-1300);
         }
 

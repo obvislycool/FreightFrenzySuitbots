@@ -166,6 +166,7 @@ public class RedBarrier extends LinearOpMode {
         webcam.stopStreaming();
 
         sleep(wait * 1000);
+        robot.dumpServo.setPosition(0.35);
         encoderDrive(TURN_SPEED, -10, 10, 3); //turn to hub
         encoderDrive(DRIVE_SPEED,  20,  20, 6.0);  //drive to hub
         encoderDrive(TURN_SPEED,   -41, +41, 10.0);  //180 turn
@@ -179,21 +180,21 @@ public class RedBarrier extends LinearOpMode {
             telemetry.update();
             slide(500);
             dump(0);
-            dump(0.45); //reset dumper
+            dump(0.35); //reset dumper
             slide(-500);
         }else if (rCount >= mCount){
             telemetry.addLine("RUNNING RIGHT AUTO");
             telemetry.update();
             slide(2150);
             dump(0);
-            dump(0.45); //reset dumper
+            dump(0.35); //reset dumper
             slide(-2150);
         }else{
             telemetry.addLine("RUNNING MIDDLE AUTO");
             telemetry.update();
             slide(1300);
             dump(0);
-            dump(0.45); //reset dumper
+            dump(0.35); //reset dumper
             slide(-1300);
         }
 
